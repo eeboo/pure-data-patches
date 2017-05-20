@@ -1,72 +1,87 @@
-#N canvas 550 127 594 528 10;
-#X obj 122 92 counter 1 8;
-#X obj 18 167 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#N canvas 96 39 1222 699 10;
+#X obj 122 13 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 121 12 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 52 337 cyclone/out~;
-#X obj 165 389 soundfiler;
-#X obj 374 392 table \$0-violin;
-#X obj 164 413 outlet;
-#X obj 58 300 cyclone/play~ \$0-violin;
-#X obj 123 166 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 123 199 cyclone/gate;
-#X obj 268 62 hradio 20 1 1 8 empty empty empty 0 -8 0 10 -262144 -1
--1 5;
-#X obj 322 32 - 1;
-#X obj 122 47 metro 150;
-#X obj 209 199 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 299 204 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 391 200 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 24 205 cyclone/gate;
-#X obj 122 135 select 1 2 3 4 5 6 7 8;
-#X obj 88 241 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 0 256;
-#X obj 190 241 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 0 256;
-#X obj 269 242 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 0 256;
-#X obj 379 242 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 0 256;
-#X obj 292 122 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 298 160 cyclone/gate;
-#X obj 217 151 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 223 189 cyclone/gate;
-#X obj 413 147 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 419 185 cyclone/gate;
-#X obj 165 357 cyclone/loadmess read -resize ../samples/BD03_1.wav
-\$0-violin;
-#X floatatom 27 256 5 0 0 0 - - -, f 5;
-#X msg 29 112 1;
-#X connect 0 0 11 0;
-#X connect 0 0 17 0;
-#X connect 1 0 16 0;
-#X connect 2 0 12 0;
-#X connect 4 0 6 0;
-#X connect 7 0 3 0;
-#X connect 8 0 9 0;
-#X connect 9 0 18 0;
-#X connect 11 0 10 0;
-#X connect 12 0 0 0;
+#X obj 539 404 cyclone/out~;
+#X obj 338 155 hradio 20 1 1 16 empty empty empty 0 -8 0 10 -262144
+-1 -1 2;
+#X obj 122 86 cyclone/counter 1 16;
+#X obj 130 142 - 1;
+#X obj 21 316 cyclone/play~ \$0-bd;
+#X obj 41 467 cyclone/loadmess read -resize ../samples/tr909/bd01.wav
+\$0-bd;
+#X obj 264 529 table \$0-bd;
+#X obj 20 267 stepvoice;
+#X obj 41 517 soundfiler;
+#X obj 41 551 outlet;
+#X obj 389 518 soundfiler;
+#X obj 389 552 outlet;
+#X obj 612 530 table \$1-hh;
+#X obj 389 468 cyclone/loadmess read -resize ../samples/tr909/hh01.wav
+\$1-hh;
+#X obj 356 268 stepvoice;
+#X obj 356 314 cyclone/play~ \$1-hh;
+#X obj 732 519 soundfiler;
+#X obj 732 553 outlet;
+#X obj 732 469 cyclone/loadmess read -resize ../samples/tr909/rs01.wav
+\$2-rs;
+#X obj 955 532 table \$2-rs;
+#X obj 767 327 cyclone/play~ \$2-rs;
+#X obj 764 274 stepvoice;
+#X obj 756 204 stepvoice;
+#X obj 38 628 soundfiler;
+#X obj 38 662 outlet;
+#X obj 261 641 table \$3-sn;
+#X obj 756 249 cyclone/play~ \$3-sn;
+#X obj 6 404 volume;
+#X obj 327 364 volume;
+#X obj 560 338 volume;
+#X obj 760 360 volume;
+#X obj 38 578 cyclone/loadmess read -resize ../samples/tr909/cp01.wav
+\$3-sn;
+#X obj 122 47 metro 200;
+#X msg 299 22 60000;
+#X obj 319 66 /;
+#X obj 319 94 / 4;
+#X floatatom 394 26 5 0 0 0 - - -, f 5;
+#X floatatom 388 98 5 0 0 0 - - -, f 5;
+#X obj 363 11 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X connect 0 0 33 0;
+#X connect 3 0 4 0;
+#X connect 3 0 8 0;
+#X connect 3 0 15 0;
+#X connect 3 0 22 0;
+#X connect 3 0 23 0;
+#X connect 4 0 2 0;
+#X connect 5 0 28 0;
+#X connect 6 0 9 0;
+#X connect 8 0 5 0;
+#X connect 9 0 10 0;
+#X connect 11 0 12 0;
+#X connect 14 0 11 0;
+#X connect 15 0 16 0;
 #X connect 16 0 29 0;
-#X connect 17 0 16 1;
-#X connect 17 1 9 1;
-#X connect 17 2 25 1;
-#X connect 17 3 23 1;
-#X connect 18 0 7 0;
-#X connect 19 0 7 0;
-#X connect 20 0 7 0;
-#X connect 22 0 23 0;
-#X connect 23 0 20 0;
+#X connect 17 0 18 0;
+#X connect 19 0 17 0;
+#X connect 21 0 31 0;
+#X connect 22 0 21 0;
+#X connect 23 0 27 0;
 #X connect 24 0 25 0;
-#X connect 25 0 19 0;
-#X connect 26 0 27 0;
-#X connect 28 0 4 0;
-#X connect 29 0 7 0;
+#X connect 27 0 30 0;
+#X connect 28 0 1 0;
+#X connect 28 0 1 1;
+#X connect 29 0 1 0;
+#X connect 29 0 1 1;
+#X connect 30 0 1 0;
+#X connect 30 0 1 1;
+#X connect 31 0 1 0;
+#X connect 31 0 1 1;
+#X connect 32 0 24 0;
+#X connect 33 0 3 0;
+#X connect 34 0 35 0;
+#X connect 35 0 36 0;
+#X connect 36 0 33 1;
+#X connect 36 0 38 0;
+#X connect 37 0 35 1;
+#X connect 37 0 39 0;
+#X connect 39 0 34 0;

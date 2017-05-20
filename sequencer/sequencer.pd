@@ -3,7 +3,7 @@
 1;
 #X obj 539 404 cyclone/out~;
 #X obj 338 155 hradio 20 1 1 16 empty empty empty 0 -8 0 10 -262144
--1 -1 2;
+-1 -1 13;
 #X obj 122 86 cyclone/counter 1 16;
 #X obj 130 142 - 1;
 #X obj 21 316 cyclone/play~ \$0-bd;
@@ -36,17 +36,17 @@
 #X obj 327 364 volume;
 #X obj 560 338 volume;
 #X obj 760 360 volume;
-#X obj 38 578 cyclone/loadmess read -resize ../samples/tr909/cp01.wav
-\$3-sn;
 #X obj 122 47 metro 200;
 #X msg 299 22 60000;
 #X obj 319 66 /;
 #X obj 319 94 / 4;
-#X floatatom 394 26 5 0 0 0 - - -, f 5;
+#X floatatom 394 30 5 0 300 0 - - -, f 5;
 #X floatatom 388 98 5 0 0 0 - - -, f 5;
 #X obj 363 11 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X connect 0 0 33 0;
+#X obj 37 578 cyclone/loadmess read -resize ../samples/tr909/cp02.wav
+\$3-sn;
+#X connect 0 0 32 0;
 #X connect 3 0 4 0;
 #X connect 3 0 8 0;
 #X connect 3 0 15 0;
@@ -76,12 +76,12 @@
 #X connect 30 0 1 1;
 #X connect 31 0 1 0;
 #X connect 31 0 1 1;
-#X connect 32 0 24 0;
-#X connect 33 0 3 0;
+#X connect 32 0 3 0;
+#X connect 33 0 34 0;
 #X connect 34 0 35 0;
-#X connect 35 0 36 0;
-#X connect 36 0 33 1;
+#X connect 35 0 32 1;
+#X connect 35 0 37 0;
+#X connect 36 0 34 1;
 #X connect 36 0 38 0;
-#X connect 37 0 35 1;
-#X connect 37 0 39 0;
-#X connect 39 0 34 0;
+#X connect 38 0 33 0;
+#X connect 39 0 24 0;

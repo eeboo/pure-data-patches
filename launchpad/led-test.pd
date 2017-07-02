@@ -1,0 +1,22 @@
+#N canvas 951 -842 689 517 10;
+#X obj 120 281 midiout;
+#X floatatom 159 258 0 0 0 0 - - -;
+#X msg 131 231 176 \, 0 \, 0;
+#X msg 109 202 176 \, 0 \, 125;
+#X msg 86 171 176 \, 0 \, 127;
+#X msg 29 94 144 \, 0 \, 15;
+#X msg 62 126 144 \, 0 \, 60 \, 144 \, 1 \, 15 \, 144 \, 2 \, 60 \,
+144 \, 3 \, 60 \, 144 \, 4 \, 60 \, 144 \, 5 \, 60 \, 144 \, 6 \, 60
+\, 144 \, 7 \, 60;
+#X text 97 94 Light red row column 1;
+#X text 427 134 light green row 1;
+#X text 163 171 display all led orange \, full bright;
+#X text 182 202 display all led orange \, low bright;
+#X text 183 231 switch off all leds;
+#X text 185 259 select midi port;
+#X connect 1 0 0 1;
+#X connect 2 0 0 0;
+#X connect 3 0 0 0;
+#X connect 4 0 0 0;
+#X connect 5 0 0 0;
+#X connect 6 0 0 0;

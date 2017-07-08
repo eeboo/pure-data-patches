@@ -1,4 +1,4 @@
-#N canvas 222 28 1185 811 10;
+#N canvas 222 22 1185 654 10;
 #X obj 52 260 list split 1;
 #X obj 52 192 until;
 #X obj 52 230 list append;

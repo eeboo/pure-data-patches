@@ -1,0 +1,21 @@
+#N canvas 610 276 450 300 10;
+#X floatatom 28 143 0 0 0 0 - - -;
+#X obj 40 76 float;
+#X obj 40 106 + \$1;
+#X obj 55 186 expr if( $f1 > 6 \, -7 \, 1) \;;
+#X obj 122 106 f 0;
+#X obj 40 47 t b;
+#X obj 122 78 r play;
+#X obj 40 20 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 56 240 print counter;
+#X connect 0 0 3 0;
+#X connect 0 0 8 0;
+#X connect 1 0 2 0;
+#X connect 2 0 0 0;
+#X connect 2 0 1 1;
+#X connect 3 0 2 1;
+#X connect 4 0 0 0;
+#X connect 5 0 1 0;
+#X connect 6 0 4 0;
+#X connect 7 0 5 0;

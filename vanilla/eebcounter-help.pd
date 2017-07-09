@@ -1,0 +1,29 @@
+#N canvas 201 -805 1063 655 10;
+#X obj 71 132 eebcounter 0 7;
+#X obj 71 43 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 111 64 2;
+#X msg 152 101 5;
+#X text 90 42 count;
+#X text 141 66 min value;
+#X text 181 103 max value;
+#X obj 71 175 print counter;
+#X text 244 33 TODO implement reset !;
+#X obj 504 50 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 573 108 5;
+#X text 523 49 count;
+#X text 602 110 max value;
+#X obj 504 182 print counter;
+#X obj 504 139 eebcounter 2;
+#X obj 573 74 loadbang;
+#X floatatom 682 112 5 0 0 0 - - -, f 5;
+#X connect 0 0 7 0;
+#X connect 1 0 0 0;
+#X connect 2 0 0 1;
+#X connect 3 0 0 2;
+#X connect 9 0 14 0;
+#X connect 10 0 14 2;
+#X connect 14 0 13 0;
+#X connect 15 0 10 0;
+#X connect 16 0 14 2;

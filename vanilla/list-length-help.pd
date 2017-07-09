@@ -1,0 +1,14 @@
+#N canvas 449 213 450 300 10;
+#X msg 35 104 list 2 3;
+#X msg 111 126 list 2 3 4;
+#X msg 125 66 list 2 3 4 8;
+#X floatatom 195 151 5 0 0 0 - - -, f 5;
+#X obj 60 164 list-length 3;
+#X obj 60 216 print size equal;
+#X obj 180 216 print passe-plat;
+#X connect 0 0 4 0;
+#X connect 1 0 4 0;
+#X connect 2 0 4 0;
+#X connect 3 0 4 1;
+#X connect 4 0 5 0;
+#X connect 4 1 6 0;

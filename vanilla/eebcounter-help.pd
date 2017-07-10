@@ -1,4 +1,4 @@
-#N canvas 201 22 1063 655 10;
+#N canvas 555 113 1063 655 10;
 #X obj 71 43 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X msg 111 64 2;
@@ -23,6 +23,10 @@
 #X text 632 63 max value;
 #X obj 71 132 eebcounter 3 7;
 #X obj 504 139 eebcounter 2;
+#X obj 92 382 print counter;
+#X obj 92 339 eebcounter 0 3;
+#X obj 92 296 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
 #X connect 0 0 18 0;
 #X connect 1 0 18 1;
 #X connect 2 0 18 2;
@@ -34,3 +38,5 @@
 #X connect 14 0 19 3;
 #X connect 18 0 6 0;
 #X connect 19 0 10 0;
+#X connect 21 0 20 0;
+#X connect 22 0 21 0;

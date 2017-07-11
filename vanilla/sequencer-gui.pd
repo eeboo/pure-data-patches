@@ -1,4 +1,4 @@
-#N canvas 2132 73 1039 926 10;
+#N canvas 2024 28 1039 926 10;
 #X obj 89 234 list split 1;
 #X obj 89 166 until;
 #X obj 89 204 list append;
@@ -46,6 +46,7 @@ to its right inlet.;
 #X obj 89 331 expr if($f1 == 1 \, 2 \, 0) \; if($f2 == $f3 \, 1 \,
 0) \; $f3, f 26;
 #X text 576 53 TODO fix tick inlet !!!!!;
+#X obj 124 705 print list;
 #X connect 0 0 37 0;
 #X connect 0 1 2 1;
 #X connect 0 2 3 0;
@@ -57,6 +58,7 @@ to its right inlet.;
 #X connect 9 0 8 0;
 #X connect 9 0 10 1;
 #X connect 10 0 15 0;
+#X connect 10 0 45 0;
 #X connect 11 0 9 0;
 #X connect 12 0 42 0;
 #X connect 12 1 14 1;

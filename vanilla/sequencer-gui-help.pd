@@ -1,9 +1,10 @@
-#N canvas 655 340 450 300 10;
+#N canvas 739 282 450 300 10;
 #X obj 108 85 sequencer-gui;
-#X msg 109 46 list 1 0 1 0 1;
 #X obj 107 15 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 104 139 print;
-#X connect 0 0 3 0;
-#X connect 1 0 0 0;
-#X connect 2 0 1 0;
+#X obj 103 156 print;
+#X msg 109 46 1 0 1;
+#X text 171 46 fix initialization;
+#X connect 0 0 2 0;
+#X connect 1 0 3 0;
+#X connect 3 0 0 0;

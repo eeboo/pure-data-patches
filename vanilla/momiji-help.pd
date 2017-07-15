@@ -1,0 +1,16 @@
+#N canvas 664 164 450 300 10;
+#X obj 278 76 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 226 238 print;
+#X msg 319 85 3;
+#X msg 352 80 7;
+#X obj 244 166 momiji 0;
+#X obj 345 158 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 355 107 15;
+#X connect 0 0 4 0;
+#X connect 2 0 4 2;
+#X connect 3 0 4 2;
+#X connect 4 0 1 0;
+#X connect 5 0 4 3;
+#X connect 6 0 4 2;

@@ -1,78 +1,21 @@
-#N canvas 0 23 700 661 10;
-#X obj 71 43 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X msg 111 64 2;
-#X msg 152 101 5;
-#X text 90 42 count;
-#X text 141 66 min value;
-#X text 181 103 max value;
-#X obj 71 175 print counter;
-#X obj 504 50 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X msg 570 96 5;
-#X text 523 49 count;
-#X obj 504 182 print counter;
-#X obj 570 62 loadbang;
-#X floatatom 625 90 5 0 0 0 - - -, f 5;
-#X obj 264 102 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X obj 689 98 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
+#N canvas 94 78 724 560 10;
 #X text 709 98 reset;
-#X text 281 103 reset;
-#X text 632 63 max value;
-#X obj 92 382 print counter;
-#X obj 92 296 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 60 38 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 606 182 print max;
-#X text 267 136 set current;
-#X floatatom 220 137 5 0 0 0 - - -, f 5;
-#X obj 399 360 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X text 418 359 count;
-#X text 509 420 max value;
-#X obj 399 492 print counter;
-#X obj 592 419 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X text 609 420 reset;
-#X text 595 453 set current;
-#X floatatom 548 454 5 0 0 0 - - -, f 5;
-#X obj 399 449 eebcounter;
-#X msg 470 341 0;
-#X msg 546 341 0;
-#X msg 503 342 3;
-#X msg 579 342 7;
-#X obj 496 288 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X obj 565 289 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X msg 551 479 7;
-#X msg 552 513 2;
-#X obj 71 132 eebcounter 3 7;
-#X obj 504 139 eebcounter 2;
-#X obj 92 339 eebcounter 0 3;
-#X connect 0 0 40 0;
-#X connect 1 0 40 1;
-#X connect 2 0 40 2;
-#X connect 7 0 41 0;
-#X connect 8 0 41 2;
-#X connect 11 0 8 0;
-#X connect 12 0 41 2;
-#X connect 13 0 40 3;
-#X connect 14 0 41 3;
-#X connect 19 0 42 0;
-#X connect 23 0 31 0;
-#X connect 27 0 31 3;
-#X connect 31 0 26 0;
-#X connect 31 0 30 0;
-#X connect 32 0 31 1;
-#X connect 33 0 31 1;
-#X connect 34 0 31 2;
-#X connect 35 0 31 2;
-#X connect 36 0 32 0;
-#X connect 36 0 34 0;
-#X connect 37 0 33 0;
-#X connect 37 0 35 0;
-#X connect 40 0 6 0;
-#X connect 41 0 10 0;
-#X connect 42 0 18 0;
+#X text 79 37 count;
+#X text 171 9 max value;
+#X obj 54 183 print counter;
+#X obj 234 40 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 251 41 reset;
+#X msg 158 33 3;
+#X msg 192 36 7;
+#X obj 170 180 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 0 256 0;
+#X obj 54 140 eebcounter 5;
+#X connect 1 0 10 0;
+#X connect 5 0 10 2;
+#X connect 7 0 10 1;
+#X connect 8 0 10 1;
+#X connect 10 0 4 0;
+#X connect 10 0 9 0;

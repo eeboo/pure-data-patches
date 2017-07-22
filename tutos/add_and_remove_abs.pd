@@ -1,0 +1,52 @@
+#N canvas 386 22 596 661 10;
+#N canvas 17 28 355 263 sub 0;
+#X restore 21 22 pd sub;
+#X msg 24 392 \; pd-sub clear;
+#X msg 24 233 \; pd-sub loadbang;
+#X floatatom 24 79 5 0 0 0 - - -;
+#X obj 52 136 * 20;
+#X obj 24 96 t f f f;
+#X obj 24 116 makefilename pd-%d-subsub;
+#X obj 24 156 pack s f f;
+#X msg 24 176 \; pd-sub obj 10 \$2 pd \$3-subsub \; \$1 obj 10 10 foo
+\$3;
+#X obj 24 325 makefilename pd-%d-subsub;
+#X msg 24 347 \; \$1 clear;
+#X floatatom 24 306 5 0 0 0 - - -;
+#X text 79 22 add and remove abstractions;
+#X msg 21 53 1;
+#X msg 61 53 2;
+#X msg 97 53 3;
+#X text 149 53 a) create some subsubpatches and abstractions;
+#X text 148 237 b) if your abstractions use loadbang you have to do
+that manually;
+#X msg 24 283 1;
+#X msg 64 283 2;
+#X msg 100 283 3;
+#X text 142 398 (clear pd-sub before saving this patch);
+#X text 145 282 c) clear subsubpatch where your abstractions are;
+#X text 23 506 e) if your abstraction does signal processing you need
+to rebuild the dsptree. you could do so by either turn off/on [pd dsp
+0 \, pd dsp 1( or dynamically create an other ~-object in a subpatch
+and clear it again.;
+#X text 25 439 d) if your abstraction has a gui inside that you want
+to open sepparately \, use either namecanvas or put the gui in an subpatch
+[pd \$1-something] and use an arguemnt as id to refenrence the subpatch.
+;
+#X text 25 578 for questions feel free to write me enrique@netpd.org
+;
+#X connect 3 0 5 0;
+#X connect 4 0 7 1;
+#X connect 5 0 6 0;
+#X connect 5 1 4 0;
+#X connect 5 2 7 2;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 9 0 10 0;
+#X connect 11 0 9 0;
+#X connect 13 0 3 0;
+#X connect 14 0 3 0;
+#X connect 15 0 3 0;
+#X connect 18 0 11 0;
+#X connect 19 0 11 0;
+#X connect 20 0 11 0;

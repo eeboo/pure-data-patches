@@ -1,4 +1,4 @@
-#N canvas 170 -810 860 382 10;
+#N canvas 170 23 860 382 10;
 #X obj 70 93 cnv 20 285 100 empty empty empty 20 12 0 14 -49933 -66577
 0;
 #X obj 79 113 eebtoggle;
@@ -7,7 +7,7 @@
 #X obj 286 113 eebtoggle;
 #X obj 161 66 select 0 1 2 3;
 #X obj 161 39 eebcounter 3;
-#X obj 70 11 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+#X obj 70 11 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
 #X obj 161 14 metro 250;
 #X connect 5 0 1 0;

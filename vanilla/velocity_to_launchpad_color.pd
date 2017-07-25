@@ -1,71 +1,79 @@
-#N canvas 0 22 644 569 10;
-#X text 14 152 red;
-#X text 103 152 green;
-#X text 249 148 blue;
-#X obj 218 169 t b f;
-#X obj 134 218 +;
-#X obj 134 243 t b f;
-#X obj 134 274 +;
-#X obj 41 153 * -65536;
-#X obj 143 152 * -256;
-#X obj 218 147 * -1;
-#X obj 134 305 - 1;
-#X obj 218 120 f 0;
-#X obj 41 27 inlet;
-#X obj 41 60 t f;
-#X obj 41 91 expr ($f1 & 3) * 255/3 \; (($f1 >> 4) & 3) * 255 / 3;
-#X obj 218 96 loadbang;
-#X obj 134 340 outlet;
-#X obj 299 252 tgl 30 0 c00 empty empty 17 7 0 10 -212212 -1 -1 0 1
+#N canvas 61 69 851 709 10;
+#X text 14 248 red;
+#X text 103 248 green;
+#X text 237 276 blue;
+#X obj 206 297 t b f;
+#X obj 134 314 +;
+#X obj 134 339 t b f;
+#X obj 134 370 +;
+#X obj 41 249 * -65536;
+#X obj 143 248 * -256;
+#X obj 206 275 * -1;
+#X obj 134 401 - 1;
+#X obj 206 248 f 0;
+#X obj 41 14 inlet;
+#X obj 41 47 t f;
+#X obj 134 436 outlet;
+#X obj 395 270 tgl 30 0 c00 empty empty 17 7 0 10 -212212 -1 -1 0 1
 ;
-#X obj 358 251 tgl 30 0 c01 empty empty 17 7 0 10 -192371 -1 -1 0 1
+#X obj 502 269 tgl 30 0 c01 empty empty 17 7 0 10 -192371 -1 -1 0 1
 ;
-#X obj 416 251 tgl 30 0 c02 empty empty 17 7 0 10 -110380 -1 -1 0 1
+#X obj 616 270 tgl 30 0 c02 empty empty 17 7 0 10 -110380 -1 -1 0 1
 ;
-#X obj 480 249 tgl 30 0 c03 empty empty 17 7 0 10 -3678 -1 -1 0 1;
-#X obj 298 326 tgl 30 0 c10 empty empty 17 7 0 10 -261365 -1 -1 0 1
+#X obj 720 269 tgl 30 0 c03 empty empty 17 7 0 10 -3678 -1 -1 0 1;
+#X obj 394 344 tgl 30 0 c10 empty empty 17 7 0 10 -261365 -1 -1 0 1
 ;
-#X obj 357 325 tgl 30 0 c11 empty empty 17 7 0 10 -261869 -1 -1 0 1
+#X obj 503 343 tgl 30 0 c11 empty empty 17 7 0 10 -261869 -1 -1 0 1
 ;
-#X obj 414 325 tgl 30 0 c12 empty empty 17 7 0 10 -261918 -1 -1 0 1
+#X obj 614 347 tgl 30 0 c12 empty empty 17 7 0 10 -261918 -1 -1 0 1
 ;
-#X obj 478 323 tgl 30 0 c13 empty empty 17 7 0 10 -220694 -1 -1 0 1
+#X obj 718 346 tgl 30 0 c13 empty empty 17 7 0 10 -220694 -1 -1 0 1
 ;
-#X obj 298 393 tgl 30 0 c20 empty empty 17 7 0 10 -250894 -1 -1 0 1
+#X obj 394 422 tgl 30 0 c20 empty empty 17 7 0 10 -250894 -1 -1 0 1
 ;
-#X obj 356 392 tgl 30 0 c21 empty empty 17 7 0 10 -260481 -1 -1 0 1
+#X obj 504 420 tgl 30 0 c21 empty empty 17 7 0 10 -260481 -1 -1 0 1
 ;
-#X obj 414 392 tgl 30 0 c22 empty empty 17 7 0 10 -261460 -1 -1 0 1
+#X obj 613 419 tgl 30 0 c22 empty empty 17 7 0 10 -261460 -1 -1 0 1
 ;
-#X obj 478 390 tgl 30 0 c23 empty empty 17 7 0 10 -261847 -1 -1 0 1
+#X obj 717 418 tgl 30 0 c23 empty empty 17 7 0 10 -261847 -1 -1 0 1
 ;
-#X obj 297 466 tgl 30 0 c30 empty empty 17 7 0 10 -217089 -1 -1 0 1
+#X obj 394 499 tgl 30 0 c30 empty empty 17 7 0 10 -217089 -1 -1 0 1
 ;
-#X obj 356 465 tgl 30 0 c31 empty empty 17 7 0 10 -234753 -1 -1 0 1
+#X obj 507 499 tgl 30 0 c31 empty empty 17 7 0 10 -234753 -1 -1 0 1
 ;
-#X obj 414 465 tgl 30 0 c32 empty empty 17 7 0 10 -251841 -1 -1 0 1
+#X obj 612 501 tgl 30 0 c32 empty empty 17 7 0 10 -251841 -1 -1 0 1
 ;
-#X obj 478 463 tgl 30 0 c33 empty empty 17 7 0 10 -260737 -1 -1 1 1
+#X obj 719 500 tgl 30 0 c33 empty empty 17 7 0 10 -260737 -1 -1 0 1
 ;
-#X msg 286 292 -212212;
-#X msg 352 292 -192371;
-#X msg 411 291 -110380;
-#X msg 476 289 -3678;
-#X msg 287 360 -261365;
-#X msg 353 361 -261869;
-#X msg 412 360 -261918;
-#X msg 477 358 -220694;
-#X obj 108 454 tgl 15 0 empty empty empty 17 7 0 10 -261689 -1 -1 0
+#X obj 83 556 tgl 60 0 empty empty empty 17 7 0 10 -217089 -1 -1 0
 1;
-#X msg 114 413 color \$1;
-#X msg 352 506 23O 81 0;
-#X msg 286 506 213 0 0;
-#X msg 411 505 245 124 0;
-#X msg 476 503 255 171 0;
-#X msg 475 431 255 238 88;
-#X msg 410 433 255 213 79;
-#X msg 351 434 255 152 0;
-#X msg 285 434 244 67 54;
+#X msg 83 527 color \$1;
+#X msg 477 542 23O 81 0;
+#X msg 371 543 213 0 0;
+#X msg 577 542 245 124 0;
+#X msg 683 540 255 171 0;
+#X msg 671 463 255 238 88;
+#X msg 568 461 255 213 79;
+#X msg 468 462 255 152 0;
+#X msg 354 462 244 67 54;
+#X msg 672 387 212 224 84;
+#X msg 561 386 252 240 116;
+#X msg 345 383 252 204 208;
+#X msg 683 311 0 228 116;
+#X msg 567 310 104 240 172;
+#X msg 453 309 184 244 200;
+#X msg 346 309 204 204 204;
+#X obj 112 174 unpack f f f;
+#X msg 451 383 252 236 176;
+#X obj 307 272 print;
+#X msg 136 23 12;
+#X obj 186 132 * 10;
+#X obj 243 175 +;
+#X msg 177 24 60;
+#X msg 215 24 47;
+#X msg 254 24 15;
+#X msg 298 20 63;
+#X obj 41 78 expr ($f1 & 3) \; (($f1 >> 4) & 3);
 #X connect 3 0 4 0;
 #X connect 3 1 4 1;
 #X connect 4 0 5 0;
@@ -75,17 +83,21 @@
 #X connect 7 0 6 0;
 #X connect 8 0 4 0;
 #X connect 9 0 3 0;
-#X connect 10 0 16 0;
+#X connect 10 0 14 0;
+#X connect 10 0 32 0;
 #X connect 11 0 9 0;
 #X connect 12 0 13 0;
-#X connect 13 0 14 0;
-#X connect 14 0 7 0;
-#X connect 14 1 8 0;
-#X connect 15 0 11 0;
-#X connect 37 0 42 0;
-#X connect 40 0 42 0;
-#X connect 42 0 41 0;
-#X connect 43 0 42 0;
-#X connect 44 0 42 0;
-#X connect 45 0 42 0;
-#X connect 46 0 42 0;
+#X connect 13 0 58 0;
+#X connect 32 0 31 0;
+#X connect 48 0 7 0;
+#X connect 48 1 8 0;
+#X connect 48 2 11 0;
+#X connect 51 0 13 0;
+#X connect 52 0 53 0;
+#X connect 53 0 50 0;
+#X connect 54 0 13 0;
+#X connect 55 0 13 0;
+#X connect 56 0 13 0;
+#X connect 57 0 13 0;
+#X connect 58 0 52 0;
+#X connect 58 1 53 1;

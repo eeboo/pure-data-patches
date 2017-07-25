@@ -1,15 +1,16 @@
-#N canvas 565 96 622 506 10;
-#X obj 10 10 tgl 60 0 \$0sdud \$0rdud empty 17 7 1 10 -166441 -166441
--166441 0 1;
-#X obj 101 11 loadbang;
-#X msg 102 340 color \$1 \$1 \$1;
-#X obj 102 75 f;
-#X obj 101 40 f 0;
+#N canvas 762 421 622 506 10;
+#X obj 10 10 tgl 60 0 \$0sdud \$0rdud empty 17 7 1 10 -212212 -212212
+-212212 1 1;
+#X obj 125 12 loadbang;
+#X msg 192 97 color \$1 \$1 \$1;
 #X obj 192 11 inlet;
-#X connect 0 0 3 0;
-#X connect 1 0 4 0;
+#X obj 10 124 outlet;
+#X obj 192 56 velocity_to_launchpad_color_value;
+#X obj 125 36 f 12;
+#X connect 0 0 4 0;
+#X connect 1 0 6 0;
 #X connect 2 0 0 0;
-#X connect 3 0 2 0;
-#X connect 4 0 3 0;
+#X connect 3 0 5 0;
 #X connect 5 0 2 0;
+#X connect 6 0 5 0;
 #X coords 0 -1 1 1 60 60 2 10 10;

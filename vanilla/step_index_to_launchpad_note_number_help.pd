@@ -1,0 +1,16 @@
+#N canvas 338 407 450 300 10;
+#X obj 100 135 step_index_to_launchpad_note_number;
+#X msg 77 59 0;
+#X msg 115 60 6;
+#X msg 152 63 12;
+#X msg 194 64 24;
+#X msg 237 65 60;
+#X floatatom 98 186 5 0 0 0 - - -, f 5;
+#X msg 140 33 8;
+#X connect 0 0 6 0;
+#X connect 1 0 0 0;
+#X connect 2 0 0 0;
+#X connect 3 0 0 0;
+#X connect 4 0 0 0;
+#X connect 5 0 0 0;
+#X connect 7 0 0 0;

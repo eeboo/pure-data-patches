@@ -1,0 +1,13 @@
+#N canvas 415 23 450 300 10;
+#X obj 111 68 s test-\$0;
+#X obj 110 123 r test-\$0;
+#X obj 103 170 outlet;
+#X obj 109 3 inlet;
+#X obj 220 95 loadbang;
+#X msg 232 134 test-\$0;
+#X msg 111 34 test-\$0;
+#X connect 1 0 2 0;
+#X connect 3 0 6 0;
+#X connect 4 0 5 0;
+#X connect 5 0 2 0;
+#X connect 6 0 0 0;

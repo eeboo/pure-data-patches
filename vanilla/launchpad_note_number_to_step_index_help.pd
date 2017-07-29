@@ -1,0 +1,14 @@
+#N canvas 66 112 450 300 10;
+#X obj 106 106 launchpad_note_number_to_step_index;
+#X msg 80 47 4;
+#X msg 133 49 8;
+#X msg 184 42 16;
+#X msg 233 44 25;
+#X msg 284 49 53;
+#X floatatom 105 174 5 0 0 0 - - -, f 5;
+#X connect 0 0 6 0;
+#X connect 1 0 0 0;
+#X connect 2 0 0 0;
+#X connect 3 0 0 0;
+#X connect 4 0 0 0;
+#X connect 5 0 0 0;

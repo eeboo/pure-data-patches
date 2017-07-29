@@ -1,4 +1,4 @@
-#N canvas 458 23 586 512 10;
+#N canvas 654 101 586 512 10;
 #X obj 111 144 sequencer-gui;
 #X obj 112 215 midiout;
 #X msg 34 143 176 \, 0 \, 0;
@@ -10,7 +10,7 @@
 #X obj 186 108 pattern-manager;
 #X obj 186 45 loadbang;
 #X obj 232 145 t l;
-#X msg 186 76 list 0 0 0 0 0 0 0 0;
+#X msg 186 76 list 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
 #X connect 0 0 1 0;
 #X connect 2 0 1 0;
 #X connect 3 0 1 1;

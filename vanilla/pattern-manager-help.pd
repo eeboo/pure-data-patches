@@ -1,8 +1,8 @@
-#N canvas 171 23 429 328 10;
+#N canvas 116 110 429 328 10;
 #X obj 20 85 pattern-manager;
 #X obj 20 16 loadbang;
-#X obj 20 126 print pattern;
-#X obj 147 116 t l;
+#X obj 29 130 print pattern;
+#X obj 143 86 t l;
 #X msg 20 47 list 0 0 0 1;
 #X connect 0 0 2 0;
 #X connect 0 0 3 0;

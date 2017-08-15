@@ -5,16 +5,17 @@
 #X obj 98 21 inlet;
 #X obj 193 20 inlet;
 #X obj 193 44 t f;
-#X obj 98 253 outlet;
+#X obj 98 280 outlet;
 #X obj 98 139 == \$1;
-#X obj 149 253 outlet;
+#X obj 150 281 outlet;
 #X obj 98 77 t l l l, f 9;
-#X text 16 281 return the list if its size is equal to inlet 2;
-#X text 151 280 return the list;
+#X text 17 309 return the list if its size is equal to inlet 2;
+#X text 152 308 return the list;
 #X text 237 22 float size to test;
 #X text 18 22 list to test;
+#X obj 98 247 t l;
 #X connect 0 0 7 0;
-#X connect 1 0 6 0;
+#X connect 1 0 14 0;
 #X connect 2 0 1 0;
 #X connect 3 0 9 0;
 #X connect 4 0 5 0;
@@ -23,3 +24,4 @@
 #X connect 9 0 0 0;
 #X connect 9 1 1 1;
 #X connect 9 2 8 0;
+#X connect 14 0 6 0;

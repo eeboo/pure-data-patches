@@ -1,4 +1,4 @@
-#N canvas 533 141 532 335 10;
+#N canvas 42 106 532 335 10;
 #X obj 148 223 sequencer-gui;
 #X obj 310 97 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
@@ -27,14 +27,13 @@
 #X obj 224 183 t l b;
 #X obj 121 167 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 59 194 print t;
 #X obj 147 101 metro 125;
 #X msg 313 254 1 0 0 0 1 0 0 1 0 0 1 0 1 0 1 1;
 #X connect 0 0 6 0;
 #X connect 1 0 3 0;
 #X connect 2 0 12 0;
 #X connect 3 0 17 0;
-#X connect 5 0 21 0;
+#X connect 5 0 20 0;
 #X connect 7 0 8 0;
 #X connect 8 0 17 0;
 #X connect 9 0 6 0;
@@ -43,10 +42,9 @@
 #X connect 12 0 17 0;
 #X connect 13 0 17 0;
 #X connect 14 0 13 0;
-#X connect 16 0 20 0;
+#X connect 16 0 19 0;
 #X connect 17 0 0 1;
 #X connect 17 1 9 0;
 #X connect 18 0 0 0;
-#X connect 18 0 19 0;
-#X connect 20 0 0 0;
-#X connect 21 0 17 0;
+#X connect 19 0 0 0;
+#X connect 20 0 17 0;

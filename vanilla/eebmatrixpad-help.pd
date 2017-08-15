@@ -1,4 +1,4 @@
-#N canvas 310 59 970 636 10;
+#N canvas 145 34 970 636 10;
 #X obj 55 178 eebmatrixpad;
 #X obj 55 9 notein;
 #X obj 55 34 pack f f;

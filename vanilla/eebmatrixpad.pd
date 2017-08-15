@@ -1,4 +1,4 @@
-#N canvas 343 25 937 684 10;
+#N canvas 343 23 937 683 10;
 #X obj 70 93 cnv 20 570 170 empty empty empty 20 12 0 14 -49933 -66577
 0;
 #X obj 540 59 route 0 1 2 3 4 5 6 7;
@@ -28,7 +28,7 @@
 #X msg 71 324 144 \, \$1 \, 60;
 #X obj 71 372 midiout;
 #X obj 183 290 loadbang;
-#X obj 183 312 f 1;
+#X msg 181 342 2;
 #X connect 1 0 21 0;
 #X connect 1 1 8 0;
 #X connect 1 2 9 0;

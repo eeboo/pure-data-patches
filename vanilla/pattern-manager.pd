@@ -1,5 +1,5 @@
-#N canvas 294 28 986 678 10;
-#X obj 535 105 list length;
+#N canvas 294 28 1680 1140 10;
+#X obj 535 85 list length;
 #X obj 80 270 until;
 #X obj 508 54 t l l;
 #X obj 107 371 list append;
@@ -24,20 +24,18 @@
 #X obj 82 38 expr if($f2 != 0 \, $f1 \, -1);
 #X obj 82 63 select -1;
 #X obj 508 17 inlet;
-#X obj 429 105 s update-list-\$0;
-#X obj 170 307 r update-list-\$0;
+#X obj 429 85 s update-list-\$0;
+#X obj 170 341 r update-list-\$0;
 #X obj 126 240 r update-list-size-\$0;
-#X obj 95 179 r update-list-size-\$0;
-#X obj 80 148 r start-loop-\$0;
+#X obj 95 183 r update-list-size-\$0;
+#X obj 80 152 r start-loop-\$0;
 #X obj 144 610 r update-list-size-\$0;
 #X obj 150 521 r start-loop-\$0;
 #X obj 318 300 s start-loop-\$0;
-#X obj 535 130 s update-list-size-\$0;
+#X obj 535 110 s update-list-size-\$0;
 #X obj 298 244 r note-\$0;
-#X obj 78 118 s note-\$0;
-#X obj 78 92 launchpad_note_number_to_step_index;
-#X obj 469 321 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
+#X obj 82 116 s note-\$0;
+#X obj 82 90 launchpad_note_number_to_step_index;
 #X obj 82 13 notein 17;
 #X connect 0 0 32 0;
 #X connect 1 0 20 0;
@@ -74,6 +72,5 @@
 #X connect 30 0 7 0;
 #X connect 33 0 16 0;
 #X connect 35 0 34 0;
-#X connect 36 0 31 0;
-#X connect 37 0 21 0;
-#X connect 37 1 21 1;
+#X connect 36 0 21 0;
+#X connect 36 1 21 1;

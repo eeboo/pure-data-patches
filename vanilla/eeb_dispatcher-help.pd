@@ -1,0 +1,12 @@
+#N canvas 265 207 450 300 10;
+#X obj 114 128 eeb_dispatcher;
+#X msg 17 20 list 45 1 0 1 0 1;
+#X msg 169 84 list 1 1 1 1 1;
+#X obj 113 169 print send;
+#X obj 195 170 print return;
+#X msg 79 50 list 99 1 1 1 1 1 1 1;
+#X connect 0 0 3 0;
+#X connect 0 1 4 0;
+#X connect 1 0 0 0;
+#X connect 2 0 0 1;
+#X connect 5 0 0 0;

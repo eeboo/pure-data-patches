@@ -1,16 +1,20 @@
-#N canvas 79 353 925 410 10;
-#X obj 258 33 loadbang;
-#X obj 335 96 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#N canvas 4 165 541 415 10;
+#X obj 177 31 loadbang;
+#X obj 382 97 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 182 177 print getlist;
-#X obj 182 131 eebpatternplayermidi 42 36;
-#X obj 180 21 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X msg 258 66 list 1 0 0 0 1 0 0 0;
-#X obj 181 70 metro 125;
-#X connect 0 0 5 0;
-#X connect 1 0 3 2;
-#X connect 3 0 2 0;
-#X connect 4 0 6 0;
-#X connect 5 0 3 1;
-#X connect 6 0 3 0;
+#X obj 87 33 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 87 58 metro 125;
+#X obj 182 131 eebpatternplayermidi 42 60;
+#X msg 177 57 list 60 1 1 1 1 1 1 1 1;
+#X msg 267 88 43;
+#X msg 306 88 55;
+#X connect 0 0 6 0;
+#X connect 1 0 5 3;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 2 0;
+#X connect 6 0 5 1;
+#X connect 7 0 5 2;
+#X connect 8 0 5 2;

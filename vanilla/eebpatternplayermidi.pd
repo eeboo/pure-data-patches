@@ -1,4 +1,4 @@
-#N canvas 557 170 528 390 10;
+#N canvas 514 203 666 417 10;
 #X obj 109 124 eebpatternplayer;
 #X obj 155 54 t l;
 #X obj 109 24 inlet;
@@ -8,7 +8,7 @@
 #X obj 109 275 noteout;
 #X obj 217 254 f \$1;
 #X obj 217 222 loadbang;
-#X obj 328 263 outlet;
+#X obj 289 255 outlet;
 #X obj 109 183 f \$2;
 #X obj 155 90 route \$2;
 #X obj 227 24 inlet;
@@ -16,6 +16,11 @@
 #X obj 287 25 inlet;
 #X obj 287 54 t b;
 #X obj 289 170 list prepend;
+#X obj 395 21 loadbang;
+#X msg 395 48 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+#X obj 464 99 f \$2;
+#X obj 395 125 list prepend;
+#X obj 464 74 loadbang;
 #X connect 0 0 5 0;
 #X connect 0 1 16 0;
 #X connect 1 0 11 0;
@@ -35,3 +40,8 @@
 #X connect 14 0 15 0;
 #X connect 15 0 0 2;
 #X connect 16 0 9 0;
+#X connect 17 0 18 0;
+#X connect 18 0 20 0;
+#X connect 19 0 20 1;
+#X connect 20 0 11 0;
+#X connect 21 0 19 0;

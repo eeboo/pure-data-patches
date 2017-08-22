@@ -1,4 +1,4 @@
-#N canvas 720 210 1680 1163 10;
+#N canvas 104 0 1680 970 10;
 #X obj 663 104 list length;
 #X obj 80 270 until;
 #X obj 107 371 list append;

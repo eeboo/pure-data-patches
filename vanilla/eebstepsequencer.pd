@@ -1,4 +1,4 @@
-#N canvas 2467 246 1214 731 10;
+#N canvas 405 148 1214 731 10;
 #X obj 170 216 pattern-manager;
 #X obj 95 288 sequencer-gui;
 #X obj 96 359 midiout;

@@ -1,11 +1,11 @@
 #N canvas 71 88 1745 793 10;
 #X obj 70 93 cnv 20 570 590 empty empty empty 20 12 0 14 -49933 -66577
 0;
-#X obj 540 9 inlet;
-#X obj 540 31 t l;
-#X obj 185 698 inlet;
-#X obj 185 733 t b;
-#X obj 185 770 s reset-launchpad-toggle;
+#X obj 23 11 inlet;
+#X obj 23 33 t l;
+#X obj 675 695 inlet;
+#X obj 675 730 t b;
+#X obj 675 767 s reset-launchpad-toggle;
 #X obj 151 113 eebpad 1 \$0;
 #X obj 221 113 eebpad 2 \$0;
 #X obj 291 113 eebpad 3 \$0;
@@ -91,9 +91,7 @@
 #X obj 571 603 eebpad 119 \$0;
 #X obj 641 603 eebpad 120 \$0;
 #X obj 641 533 eebpad 104 \$0;
-#X obj 431 50 print;
 #X connect 1 0 2 0;
-#X connect 1 0 91 0;
 #X connect 2 0 27 0;
 #X connect 3 0 4 0;
 #X connect 4 0 5 0;

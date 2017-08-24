@@ -1,5 +1,5 @@
 #N canvas 71 88 1745 793 10;
-#X obj 70 93 cnv 20 570 590 empty empty empty 20 12 0 14 -49933 -66577
+#X obj 70 93 cnv 20 640 590 empty empty empty 20 12 0 14 -49933 -66577
 0;
 #X obj 23 11 inlet;
 #X obj 23 33 t l;
@@ -28,7 +28,7 @@
 #X obj 121 699 loadbang;
 #X msg 121 734 2;
 #X obj 672 34 route 0 1 2 3 4 5 6 7 8;
-#X obj 641 113 eebpad 8 \$0;
+#X obj 647 123 eebpad 8 \$0 40;
 #X obj 755 98 route 16 17 18 19 20 21 22 23 24;
 #X obj 784 157 route 32 33 34 35 36 37 38 39 40;
 #X obj 908 203 route 48 49 50 51 52 53 54 55 56;
@@ -44,8 +44,8 @@
 #X obj 431 253 eebpad 37 \$0;
 #X obj 501 253 eebpad 38 \$0;
 #X obj 571 253 eebpad 39 \$0;
-#X obj 641 253 eebpad 40 \$0;
-#X obj 641 183 eebpad 24 \$0;
+#X obj 647 263 eebpad 40 \$0 40;
+#X obj 647 193 eebpad 24 \$0 40;
 #X obj 151 323 eebpad 49 \$0;
 #X obj 221 323 eebpad 50 \$0;
 #X obj 291 323 eebpad 51 \$0;
@@ -62,7 +62,7 @@
 #X obj 81 323 eebpad 48 \$0;
 #X obj 81 393 eebpad 64 \$0;
 #X obj 362 393 eebpad 68 \$0;
-#X obj 641 323 eebpad 56 \$0;
+#X obj 647 333 eebpad 56 \$0 40;
 #X obj 81 463 eebpad 80 \$0;
 #X obj 151 463 eebpad 81 \$0;
 #X obj 221 463 eebpad 82 \$0;
@@ -71,8 +71,8 @@
 #X obj 431 463 eebpad 85 \$0;
 #X obj 501 463 eebpad 86 \$0;
 #X obj 571 463 eebpad 87 \$0;
-#X obj 641 463 eebpad 88 \$0;
-#X obj 641 393 eebpad 72 \$0;
+#X obj 647 473 eebpad 88 \$0 40;
+#X obj 647 403 eebpad 72 \$0 40;
 #X obj 151 533 eebpad 97 \$0;
 #X obj 221 533 eebpad 98 \$0;
 #X obj 291 533 eebpad 99 \$0;
@@ -89,8 +89,8 @@
 #X obj 431 603 eebpad 117 \$0;
 #X obj 501 603 eebpad 118 \$0;
 #X obj 571 603 eebpad 119 \$0;
-#X obj 641 603 eebpad 120 \$0;
-#X obj 641 533 eebpad 104 \$0;
+#X obj 647 613 eebpad 120 \$0 40;
+#X obj 647 543 eebpad 104 \$0 40;
 #X connect 1 0 2 0;
 #X connect 2 0 27 0;
 #X connect 3 0 4 0;
@@ -178,4 +178,4 @@
 #X connect 35 6 87 0;
 #X connect 35 7 88 0;
 #X connect 35 8 89 0;
-#X coords 0 -1 1 1 570 590 2 70 93;
+#X coords 0 -1 1 1 640 590 2 70 93;

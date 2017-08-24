@@ -1,0 +1,13 @@
+#N canvas 491 499 820 512 10;
+#X obj 140 93 tgl 80 0 empty r-toggle-\$0 empty 17 7 0 10 -262144 -1
+-1 0 80;
+#X obj 296 160 print;
+#X obj 296 58 loadbang;
+#X obj 296 88 f \$1;
+#X msg 296 115 \; r-toggle-\$0 size \$1;
+#X obj 88 65 cnv 15 100 60 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 1 0;
+#X coords 0 -1 1 1 150 150 1 85 63;

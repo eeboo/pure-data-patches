@@ -1,0 +1,3 @@
+#N canvas 1485 450 450 300 10;
+#X obj 286 125 eebpad 2 2;
+#X obj 62 112 eebpad 2 2 40;

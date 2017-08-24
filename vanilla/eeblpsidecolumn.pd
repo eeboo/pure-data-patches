@@ -1,0 +1,10 @@
+#N canvas 1391 620 589 527 10;
+#X obj 25 48 expr if($f2 != 0 \, $f1 \, -1);
+#X obj 25 73 select -1;
+#X obj 27 190 s note-\$0;
+#X obj 25 23 notein 17;
+#X obj 25 119 launchpad_note_number_to_sidepanel_index;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 3 0 0 0;
+#X connect 3 1 0 1;

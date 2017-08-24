@@ -1,0 +1,2 @@
+#N canvas 1440 495 450 301 10;
+#X obj 74 96 test-dyn-size 80 80;

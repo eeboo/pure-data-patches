@@ -1,0 +1,12 @@
+#N canvas 515 38 699 477 10;
+#X obj 157 150 eeb_notein_translator on off;
+#X msg 157 115 list 8 24 40 56 72 88 104 120;
+#X obj 187 220 receive on;
+#X obj 278 218 receive off;
+#X obj 187 246 print on;
+#X obj 278 246 print off;
+#X obj 157 71 loadbang;
+#X connect 1 0 0 0;
+#X connect 2 0 4 0;
+#X connect 3 0 5 0;
+#X connect 6 0 1 0;

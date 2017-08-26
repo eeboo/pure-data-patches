@@ -1,0 +1,18 @@
+#N canvas -16 88 455 301 10;
+#X obj 35 27 midiin;
+#X obj 35 50 cyclone/xnotein 1;
+#X obj 35 129 eeb_list_contains_element;
+#X obj 183 210 s;
+#X obj 182 34 inlet;
+#X obj 209 157 symbol \$1;
+#X obj 280 158 symbol \$2;
+#X obj 209 129 select 1 0;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 2 7 0;
+#X connect 2 1 3 0;
+#X connect 4 0 2 1;
+#X connect 5 0 3 1;
+#X connect 6 0 3 1;
+#X connect 7 0 5 0;
+#X connect 7 1 6 0;

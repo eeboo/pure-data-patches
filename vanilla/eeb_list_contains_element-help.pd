@@ -1,4 +1,4 @@
-#N canvas 349 337 450 300 10;
+#N canvas 183 106 450 300 10;
 #X obj 67 116 eeb_list_contains_element;
 #X msg 9 70 56;
 #X msg 73 40 dog;
@@ -7,7 +7,9 @@
 #X obj 214 52 loadbang;
 #X obj 67 158 print match:;
 #X msg 214 81 list 35 56 85 45 57 99;
+#X obj 214 156 print index;
 #X connect 0 0 6 0;
+#X connect 0 1 8 0;
 #X connect 1 0 0 0;
 #X connect 2 0 0 0;
 #X connect 3 0 0 0;

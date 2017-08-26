@@ -1,0 +1,28 @@
+#N canvas 233 44 623 494 10;
+#X msg 16 43 list 8 24 40 56 72 88 104 120;
+#X obj 16 16 loadbang;
+#X obj 15 110 loadbang;
+#X msg 15 136 list 0 1 2 3 4 5 6 7 16 17 18 19 20 21 22 23 32 33 34
+35 36 37 38 39 48 49 50 51 52 53 54 55 64 65 66 67 68 69 70 71 80 81
+82 83 84 85 86 87 96 97 98 99 100 101 102 103 112 113 114 115 116 117
+118 119, f 36;
+#X obj 29 290 r grid_panel_bt_down;
+#X obj 171 290 r grid_panel_bt_up;
+#X obj 28 363 r side_panel_bt_down;
+#X obj 170 363 r side_panel_bt_up;
+#X obj 29 323 print gp_down;
+#X obj 171 321 print gp_up;
+#X obj 28 396 print sp_down;
+#X obj 170 394 print sp_up;
+#X obj 15 230 eeb_notein_translator grid_panel_bt_up grid_panel_bt_down
+;
+#X obj 16 69 eeb_notein_translator side_panel_bt_up side_panel_bt_down
+;
+#X connect 0 0 13 0;
+#X connect 1 0 0 0;
+#X connect 2 0 3 0;
+#X connect 3 0 12 0;
+#X connect 4 0 8 0;
+#X connect 5 0 9 0;
+#X connect 6 0 10 0;
+#X connect 7 0 11 0;

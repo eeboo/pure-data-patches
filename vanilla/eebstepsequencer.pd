@@ -1,4 +1,4 @@
-#N canvas 405 148 1214 731 10;
+#N canvas 66 23 1214 690 10;
 #X obj 170 216 pattern-manager;
 #X obj 95 288 sequencer-gui;
 #X obj 96 359 midiout;
@@ -61,6 +61,7 @@
 #X msg 1039 461 56;
 #X msg 1009 28 35;
 #X msg 135 338 1;
+#X obj 130 589 eeb_launchpad_midi_in;
 #X connect 0 0 10 0;
 #X connect 1 0 2 0;
 #X connect 3 0 2 0;

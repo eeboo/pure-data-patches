@@ -1,0 +1,6 @@
+#N canvas 1086 121 827 661 10;
+#N canvas 1392 325 450 323 songs_template 0;
+#X restore 42 317 pd songs_template;
+#N canvas -32000 -32000 132 0 song_template 1;
+#X obj 85 53;
+#X restore 67 393 pd song_template;

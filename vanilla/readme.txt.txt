@@ -29,3 +29,62 @@ type 6 (note length)    : note length editor
 type 7 (note pitch)     : note pitch editor
 type 8 (note velocity)  : note velocity editor
 
+##############################################
+Data model:
+##############################################
+
+global:Global
+  int tempo
+  (int swing)
+  tracks:MidiTrack[8]
+
+MidiTrack
+  int index
+  int midi_chan
+  int midi_vol
+  int midi_port
+  int is_muted
+  
+patterns:Pattern[]
+
+(Pattern
+  int tempo
+  (int swing)
+  seqSlots:SeqSlot[8])
+
+songs:Song[]
+
+Song
+  symbol name
+  seqSlots:SeqSlot[]
+  cc_automations:Automation[]
+  
+SeqSlot
+  length:int
+  isMuted:int
+  trackIndex:int
+  notes:NoteSlot[]
+  cc_automations:Automation[]
+
+NoteSlot
+  note:Note
+  cc_automations:Automation[]
+
+Automation
+  cc_number:int
+  midi_chan:int
+  midi_port:int
+  automation_values:AutomationValue[]
+
+AutomationValue
+  value:int
+  offset:int    
+
+Note
+  int pitch
+  int velocity
+  int length
+
+
+  
+

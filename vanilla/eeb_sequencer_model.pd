@@ -16,10 +16,10 @@ float midi_port array midi_automations_values template_midi_cc_automation_value
 ;
 #N struct template_midi_track float midi_chan float midi_port float
 is_muted;
-#N struct template_global float tempo array midi_tracks template_midi_track
+#N struct template_global float bpm array midi_tracks template_midi_track
 ;
 #N struct template1 float x float y float z float q;
-#N canvas 710 132 827 661 10;
+#N canvas 2442 184 827 730 10;
 #N canvas 1392 325 450 323 template_songs 0;
 #X obj 59 114 struct template_songs array songs template_song;
 #X restore 30 136 pd template_songs;
@@ -32,7 +32,7 @@ template_seq_slot array midi_cc_automations template_midi_cc_automation
 #X obj 31 47 struct template_seq_slot float length float is_muted float
 midi_track_index array seq template_seq, f 96;
 #X restore 79 229 pd template_seq_slot;
-#N canvas 1273 302 450 323 template_midi_cc_automation 1;
+#N canvas 1273 302 450 323 template_midi_cc_automation 0;
 #X obj 66 68 struct template_midi_cc_automation float midi_cc_number
 float midi_chan float midi_port array midi_automations_values template_midi_cc_automation_value
 ;
@@ -53,67 +53,89 @@ array midi_cc_automations template_midi_cc_automation;
 #X obj 48 61 struct template_seq float length array note_slots template_midi_note_slot
 array midi_cc_automations template_midi_cc_automation;
 #X restore 110 276 pd template_seq;
-#N canvas 415 122 450 300 template_midi_track 0;
+#N canvas 915 153 450 323 template_midi_track 0;
 #X obj 25 74 struct template_midi_track float midi_chan float midi_port
 float is_muted;
 #X restore 30 94 pd template_midi_track;
-#N canvas 719 335 450 300 template_global 0;
-#X obj 81 81 struct template_global float tempo array midi_tracks template_midi_track
+#N canvas 1080 355 450 300 template_global 0;
+#X obj 81 81 struct template_global float bpm array midi_tracks template_midi_track
 ;
 #X restore 26 61 pd template_global;
 #N canvas 719 335 450 300 data 0;
-#X scalar template_midi_track 1 1 0 \;;
-#X scalar template_midi_track 2 1 1 \;;
 #X restore 27 32 pd data;
-#N canvas 370 148 831 464 init 1;
-#X obj 231 159 pointer;
-#X msg 231 101 \; pd-data clear;
-#X msg 231 137 traverse pd-data \, bang;
-#X obj 121 102 t b b b;
-#X msg 121 61 bang;
-#X obj 121 30 loadbang;
-#X text 155 61 click here to re-initialize;
-#X text 21 191;
-#X msg 24 138 1 1 0 \, 2 1 1;
-#X obj 21 171 unpack f f f;
-#X obj 24 253 append template_midi_track midi_chan midi_port is_muted
-;
-#X obj 404 169 pointer;
-#X msg 419 137 next;
-#X text 456 169 <- object that outputs pointers to scalars;
-#X floatatom 404 250 5 0 0 0 - - -, f 5;
-#X floatatom 445 250 5 0 0 0 - - -, f 5;
-#X floatatom 486 250 5 0 0 0 - - -, f 5;
-#X obj 443 196 print;
-#X text 484 196 <- this gets a bang when we reach the end;
-#X text 521 112 <- go to head of list (click first);
-#X text 459 137 <- output next item (click 4 times);
-#X text 401 61 The "next" message tells the [pointer] object to go
+#N canvas 972 84 585 850 init 1;
+#X obj 234 173 pointer;
+#X msg 234 115 \; pd-data clear;
+#X msg 234 151 traverse pd-data \, bang;
+#X obj 124 116 t b b b;
+#X msg 124 75 bang;
+#X obj 124 44 loadbang;
+#X text 158 75 click here to re-initialize;
+#X obj 25 517 pointer;
+#X text 77 517 <- object that outputs pointers to scalars;
+#X obj 64 544 print;
+#X text 128 543 <- this gets a bang when we reach the end;
+#X text 165 480 <- go to head of list (click first);
+#X text 32 430 The "next" message tells the [pointer] object to go
 to the next scalar in the list and output it. If there are no more
 \, "pointer" outputs a bang at right.;
-#X msg 404 112 traverse pd-data;
-#X obj 404 221 get template_midi_track midi_chan midi_port is_muted
+#X msg 27 152 120;
+#X obj 27 191 append template_global bpm;
+#X obj 25 569 get template_global bpm;
+#X msg 60 258 8;
+#X obj 60 280 setsize template_global midi_tracks;
+#X obj 352 365 element template_global midi_tracks;
+#X obj 43 393 set template_midi_track midi_chan midi_port is_muted
 ;
-#X text 612 235;
-#X text 609 216;
-#X connect 0 0 10 3;
+#X msg 43 309 1 1 0 0 \, 2 1 0 1 \, 3 1 0 2 \, 4 1 0 3 \, 5 1 0 4 \,
+6 1 0 5 \, 7 1 0 6 \, 8 1 0 7;
+#X msg 25 481 traverse pd-data \, next;
+#X obj 25 604 s global-bpm;
+#X obj 26 637 r global-bpm;
+#X obj 26 668 print global-bpm;
+#X obj 26 234 t b b b p;
+#X obj 121 253 t p p;
+#X obj 43 357 unpack f f f f;
+#X floatatom 168 590 0 0 0 0 - - -;
+#X obj 168 682 pack f f f;
+#X obj 168 718 print midi-tracks;
+#X obj 168 616 element template_global midi_tracks;
+#X obj 168 647 get template_midi_track midi_chan midi_port is_muted
+;
+#X connect 0 0 14 1;
 #X connect 2 0 0 0;
-#X connect 3 0 8 0;
+#X connect 3 0 13 0;
 #X connect 3 1 2 0;
 #X connect 3 2 1 0;
 #X connect 4 0 3 0;
 #X connect 5 0 4 0;
-#X connect 8 0 9 0;
-#X connect 9 0 10 0;
-#X connect 9 1 10 1;
-#X connect 9 2 10 2;
-#X connect 11 0 23 0;
-#X connect 11 1 17 0;
-#X connect 12 0 11 0;
-#X connect 22 0 11 0;
-#X connect 23 0 14 0;
-#X connect 23 1 15 0;
-#X connect 23 2 16 0;
+#X connect 7 0 15 0;
+#X connect 7 0 31 1;
+#X connect 7 1 9 0;
+#X connect 13 0 14 0;
+#X connect 14 0 25 0;
+#X connect 15 0 22 0;
+#X connect 16 0 17 0;
+#X connect 18 0 19 3;
+#X connect 20 0 27 0;
+#X connect 21 0 7 0;
+#X connect 23 0 24 0;
+#X connect 25 0 21 0;
+#X connect 25 1 20 0;
+#X connect 25 2 16 0;
+#X connect 25 3 26 0;
+#X connect 26 0 18 1;
+#X connect 26 1 17 1;
+#X connect 27 0 19 0;
+#X connect 27 1 19 1;
+#X connect 27 2 19 2;
+#X connect 27 3 18 0;
+#X connect 28 0 31 0;
+#X connect 29 0 30 0;
+#X connect 31 0 32 0;
+#X connect 32 0 29 0;
+#X connect 32 1 29 1;
+#X connect 32 2 29 2;
 #X restore 65 531 pd init;
 #N canvas 719 335 495 363 template1 0;
 #X obj 116 81 filledpolygon 244 q 5 0 0 20 z 40 0;

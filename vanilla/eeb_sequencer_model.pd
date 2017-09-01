@@ -19,7 +19,9 @@ is_muted;
 #N struct template_global float bpm array midi_tracks template_midi_track
 ;
 #N struct template1 float x float y float z float q;
-#N canvas 2442 184 827 730 10;
+#N struct template_simple_seq float length float midi_track_index array
+midi_notes template_midi_note;
+#N canvas 628 44 1091 823 10;
 #N canvas 1392 325 450 323 template_songs 0;
 #X obj 59 114 struct template_songs array songs template_song;
 #X restore 30 136 pd template_songs;
@@ -44,7 +46,7 @@ delay_ms;
 #N canvas 1273 302 450 323 template_midi_note 0;
 #X obj 19 66 struct template_midi_note float pitch float velocity float
 length;
-#X restore 154 358 pd template_midi_note;
+#X restore 261 674 pd template_midi_note;
 #N canvas 1190 492 450 346 template_midi_note_slot 0;
 #X obj 25 52 struct template_midi_note_slot array midi_notes template_midi_note
 array midi_cc_automations template_midi_cc_automation;
@@ -62,8 +64,10 @@ float is_muted;
 ;
 #X restore 26 61 pd template_global;
 #N canvas 719 335 450 300 data 0;
+#X scalar template_global 120 \; 1 1 0 \; 2 1 0 \; 3 1 0 \; 4 1 0 \;
+5 1 0 \; 6 1 0 \; 7 1 0 \; 8 1 0 \; \;;
 #X restore 27 32 pd data;
-#N canvas 972 84 585 850 init 1;
+#N canvas 748 0 585 783 init 1;
 #X obj 234 173 pointer;
 #X msg 234 115 \; pd-data clear;
 #X msg 234 151 traverse pd-data \, bang;
@@ -153,3 +157,7 @@ the values from the data structure. Other values are constant. The
 position of the object is automatically controlled by fields named
 "x" and "y".;
 #X restore 66 491 pd template1;
+#N canvas 1086 412 450 346 template_simple_seq 1;
+#X obj 48 61 struct template_simple_seq float length float midi_track_index
+array midi_notes template_midi_note;
+#X restore 229 649 pd template_simple_seq;

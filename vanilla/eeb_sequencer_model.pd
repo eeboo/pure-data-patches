@@ -21,7 +21,7 @@ is_muted;
 #N struct template1 float x float y float z float q;
 #N struct template_simple_seq float length float midi_track_index array
 midi_notes template_midi_note;
-#N canvas 628 44 1091 823 10;
+#N canvas 2320 108 1091 823 10;
 #N canvas 1392 325 450 323 template_songs 0;
 #X obj 59 114 struct template_songs array songs template_song;
 #X restore 30 136 pd template_songs;
@@ -64,8 +64,6 @@ float is_muted;
 ;
 #X restore 26 61 pd template_global;
 #N canvas 719 335 450 300 data 0;
-#X scalar template_global 120 \; 1 1 0 \; 2 1 0 \; 3 1 0 \; 4 1 0 \;
-5 1 0 \; 6 1 0 \; 7 1 0 \; 8 1 0 \; \;;
 #X restore 27 32 pd data;
 #N canvas 748 0 585 783 init 1;
 #X obj 234 173 pointer;
@@ -157,7 +155,11 @@ the values from the data structure. Other values are constant. The
 position of the object is automatically controlled by fields named
 "x" and "y".;
 #X restore 66 491 pd template1;
-#N canvas 1086 412 450 346 template_simple_seq 1;
+#N canvas 1086 412 450 346 template_simple_seq 0;
 #X obj 48 61 struct template_simple_seq float length float midi_track_index
 array midi_notes template_midi_note;
 #X restore 229 649 pd template_simple_seq;
+#N canvas 940 460 713 323 template_simple_seq_slot 1;
+#X obj 31 47 struct template_seq_slot float length float is_muted float
+midi_track_index array seq template_simple_seq, f 96;
+#X restore 201 620 pd template_simple_seq_slot;

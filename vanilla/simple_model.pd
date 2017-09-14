@@ -1,0 +1,254 @@
+#N struct template_midi_note float pitch float velocity float duration
+float is_activated;
+#N struct template_song float song_index array seq_slots template_seq_slot
+;
+#N struct template_seq_slot float length float is_muted float midi_track_index
+array seq template_seq;
+#N struct template_seq float length float midi_track_index array midi_notes
+template_midi_note;
+#N canvas 2125 242 879 604 10;
+#N canvas 1273 302 450 323 template_midi_note 0;
+#X obj 19 66 struct template_midi_note float pitch float velocity float
+duration float is_activated;
+#X restore 717 557 pd template_midi_note;
+#N canvas 719 335 450 300 data 0;
+#X scalar template_song 0 \; 16 0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \;
+0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0
+0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0
+0 0 \; 0 0 0 0 \; \; \; 16 0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0
+0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0
+0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0
+\; 0 0 0 0 \; \; \; 16 0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0
+\; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \;
+0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0
+0 0 0 \; \; \; 16 0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0
+0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0
+0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0
+0 \; \; \; 16 0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0
+0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0
+\; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \;
+\; \; 16 0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \;
+0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0
+0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \;
+\; 16 0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0
+0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0
+0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \;
+32 1 8 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0
+0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0
+\; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; 16
+0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0
+\; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \;
+0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; 16 0 0
+\; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0
+0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0
+0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; 16 0 0 \;
+16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0
+0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0
+0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; 16 0 0 \; 16
+1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0
+\; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \;
+0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; 16 0 0 \; 16 1 \;
+0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0
+0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0
+0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; 16 0 0 \; 16 1 \; 0 0
+0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0
+0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0
+\; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; 16 0 0 \; 16 1 \; 0 0 0 0
+\; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \;
+0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0
+0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; 16 0 0 \; 16 1 \; 0 0 0 0 \; 0
+0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0
+0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0
+0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; \;;
+#X restore 717 462 pd data;
+#N canvas 843 497 450 323 template_song 0;
+#X obj 45 31 struct template_song float song_index array seq_slots
+template_seq_slot;
+#X restore 717 485 pd template_song;
+#N canvas 896 172 518 372 get_slot 0;
+#X obj 97 28 inlet;
+#X obj 379 32 inlet;
+#X obj 112 297 outlet;
+#X obj 379 67 pointer;
+#X obj 97 68 t l;
+#X obj 97 104 unpack;
+#X obj 112 244 pack p f;
+#X obj 196 173 element template_song seq_slots;
+#X obj 157 206 pointer;
+#X obj 85 140 t b f;
+#X connect 0 0 4 0;
+#X connect 1 0 3 0;
+#X connect 3 0 7 1;
+#X connect 4 0 5 0;
+#X connect 5 0 9 0;
+#X connect 5 1 7 0;
+#X connect 6 0 2 0;
+#X connect 7 0 8 1;
+#X connect 8 0 6 0;
+#X connect 9 0 8 0;
+#X connect 9 1 6 1;
+#X restore 121 161 pd get_slot;
+#X obj 184 31 loadbang;
+#N canvas 600 60 1048 861 init_song 0;
+#X obj 203 187 pointer;
+#X msg 223 118 \; pd-data clear;
+#X msg 203 158 traverse pd-data \, bang;
+#X obj 184 93 t b b b;
+#X msg 184 60 bang;
+#X text 219 59 click here to re-initialize;
+#X text 255 187 store pointer;
+#X text 313 123 send reset memory message;
+#X text 346 156 send get global data pointer message;
+#X obj 423 436 setsize template_song seq_slots;
+#X obj 423 409 f 16;
+#X obj 203 217 t b p;
+#X obj 218 436 element template_song seq_slots;
+#X obj 218 405 eebcounter 15;
+#X obj 233 523 f 0;
+#X obj 233 734 set template_seq length midi_track_index;
+#X msg 233 648 16 1;
+#X obj 428 574 set template_seq_slot length is_muted;
+#X msg 428 509 16 0;
+#X obj 428 543 unpack;
+#X obj 233 677 unpack;
+#X obj 532 704 f 16;
+#X obj 233 609 t b p b p;
+#X obj 218 474 t p b p b p;
+#X obj 203 246 f 0;
+#X obj 203 276 append template_song song_index;
+#X obj 218 379 until;
+#X obj 218 350 f 16;
+#X obj 233 574 element template_seq_slot seq;
+#X obj 532 733 setsize template_seq midi_notes;
+#X obj 205 776 outlet;
+#X obj 203 306 t p b p b p;
+#X text 327 296 create song;
+#X text 515 455 init slots number;
+#X text 599 592 init slot;
+#X text 645 754 init sequence length;
+#X text 438 755 init sequence;
+#X obj 184 25 inlet;
+#X connect 0 0 11 0;
+#X connect 2 0 0 0;
+#X connect 3 1 2 0;
+#X connect 3 2 1 0;
+#X connect 4 0 3 0;
+#X connect 10 0 9 0;
+#X connect 11 0 24 0;
+#X connect 11 1 25 1;
+#X connect 12 0 23 0;
+#X connect 13 0 12 0;
+#X connect 14 0 28 0;
+#X connect 16 0 20 0;
+#X connect 18 0 19 0;
+#X connect 19 0 17 0;
+#X connect 19 1 17 1;
+#X connect 20 0 15 0;
+#X connect 20 1 15 1;
+#X connect 21 0 29 0;
+#X connect 22 0 16 0;
+#X connect 22 1 15 2;
+#X connect 22 2 21 0;
+#X connect 22 3 29 1;
+#X connect 23 1 14 0;
+#X connect 23 2 28 1;
+#X connect 23 3 18 0;
+#X connect 23 4 17 2;
+#X connect 24 0 25 0;
+#X connect 25 0 31 0;
+#X connect 26 0 13 0;
+#X connect 27 0 26 0;
+#X connect 28 0 22 0;
+#X connect 31 0 30 0;
+#X connect 31 1 27 0;
+#X connect 31 2 12 1;
+#X connect 31 3 10 0;
+#X connect 31 4 9 1;
+#X connect 37 0 4 0;
+#X restore 184 89 pd init_song;
+#X obj 121 129 r get_slot;
+#X msg 417 147 bang;
+#X obj 417 220 s get_slot;
+#X msg 184 61 bang;
+#X obj 122 226 pointer;
+#X obj 122 195 unpack p f;
+#X obj 149 323 print length;
+#N canvas 2168 326 713 461 template_seq_slot 0;
+#X obj 31 47 struct template_seq_slot float length float is_muted float
+midi_track_index array seq template_seq, f 96;
+#X restore 717 509 pd template_seq_slot;
+#N canvas 1152 199 450 461 template_seq 1;
+#X obj 48 61 struct template_seq float length float midi_track_index
+array midi_notes template_midi_note;
+#X restore 717 533 pd template_seq;
+#X obj 122 259 t p p;
+#X obj 82 327 pointer;
+#X msg 82 291 bang;
+#X obj 82 355 t b p;
+#X msg 417 182 4 7;
+#N canvas 2637 123 450 346 edit_slot 0;
+#X obj 20 13 inlet;
+#X obj 20 44 t l;
+#X obj 341 15 inlet;
+#X obj 341 44 t p;
+#X obj 20 126 set template_seq_slot length is_muted midi_track_index
+;
+#X obj 74 13 inlet;
+#X obj 73 44 t f;
+#X obj 129 15 inlet;
+#X obj 128 46 t f;
+#X obj 235 12 inlet;
+#X obj 234 43 t f;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 3;
+#X connect 5 0 6 0;
+#X connect 6 0 4 0;
+#X connect 7 0 8 0;
+#X connect 8 0 4 1;
+#X connect 9 0 10 0;
+#X connect 10 0 4 2;
+#X restore 84 436 pd edit_slot;
+#X msg 83 389 32 1 8;
+#X obj 149 295 get template_seq_slot length is_muted midi_track_index
+;
+#X obj 470 328 print midi_track_index;
+#X obj 308 323 print is_muted;
+#N canvas 326 352 657 300 edit_seq 1;
+#X obj 43 59 inlet;
+#X obj 415 64 inlet;
+#X obj 415 93 t p;
+#X obj 70 152 element template_seq_slot length is_muted midi_track_index
+;
+#X obj 70 121 f 0;
+#X obj 43 90 t l b;
+#X obj 70 180 pointer;
+#X obj 43 228 set template_seq length midi_track_index;
+#X connect 0 0 5 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 1;
+#X connect 3 0 6 0;
+#X connect 4 0 3 0;
+#X connect 5 0 7 0;
+#X connect 5 1 4 0;
+#X connect 6 0 7 2;
+#X restore 88 481 pd edit_seq;
+#X connect 3 0 11 0;
+#X connect 5 0 3 1;
+#X connect 6 0 3 0;
+#X connect 7 0 19 0;
+#X connect 9 0 5 0;
+#X connect 10 0 15 0;
+#X connect 11 0 10 0;
+#X connect 15 0 16 1;
+#X connect 15 1 22 0;
+#X connect 16 0 18 0;
+#X connect 17 0 16 0;
+#X connect 18 0 21 0;
+#X connect 18 1 20 4;
+#X connect 19 0 8 0;
+#X connect 21 0 20 0;
+#X connect 22 0 12 0;
+#X connect 22 1 24 0;
+#X connect 22 2 23 0;

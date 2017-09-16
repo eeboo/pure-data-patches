@@ -6,7 +6,7 @@ float is_activated;
 array seq template_seq;
 #N struct template_seq float length float midi_track_index array midi_notes
 template_midi_note;
-#N canvas 2125 242 879 604 10;
+#N canvas 401 104 879 604 10;
 #N canvas 1273 302 450 323 template_midi_note 0;
 #X obj 19 66 struct template_midi_note float pitch float velocity float
 duration float is_activated;
@@ -35,8 +35,8 @@ duration float is_activated;
 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \;
 32 1 8 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0
 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0
-\; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; 16
-0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0
+\; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; 32
+1 8 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0
 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \;
 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; 16 0 0
 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0
@@ -185,7 +185,6 @@ array midi_notes template_midi_note;
 #X obj 82 327 pointer;
 #X msg 82 291 bang;
 #X obj 82 355 t b p;
-#X msg 417 182 4 7;
 #N canvas 2637 123 450 346 edit_slot 0;
 #X obj 20 13 inlet;
 #X obj 20 44 t l;
@@ -215,7 +214,7 @@ array midi_notes template_midi_note;
 ;
 #X obj 470 328 print midi_track_index;
 #X obj 308 323 print is_muted;
-#N canvas 326 352 657 300 edit_seq 1;
+#N canvas 326 352 657 300 edit_seq 0;
 #X obj 43 59 inlet;
 #X obj 415 64 inlet;
 #X obj 415 93 t p;
@@ -234,21 +233,22 @@ array midi_notes template_midi_note;
 #X connect 5 1 4 0;
 #X connect 6 0 7 2;
 #X restore 88 481 pd edit_seq;
+#X msg 417 182 4 7;
 #X connect 3 0 11 0;
 #X connect 5 0 3 1;
 #X connect 6 0 3 0;
-#X connect 7 0 19 0;
+#X connect 7 0 25 0;
 #X connect 9 0 5 0;
 #X connect 10 0 15 0;
 #X connect 11 0 10 0;
 #X connect 15 0 16 1;
-#X connect 15 1 22 0;
+#X connect 15 1 21 0;
 #X connect 16 0 18 0;
 #X connect 17 0 16 0;
-#X connect 18 0 21 0;
-#X connect 18 1 20 4;
-#X connect 19 0 8 0;
-#X connect 21 0 20 0;
-#X connect 22 0 12 0;
-#X connect 22 1 24 0;
-#X connect 22 2 23 0;
+#X connect 18 0 20 0;
+#X connect 18 1 19 4;
+#X connect 20 0 19 0;
+#X connect 21 0 12 0;
+#X connect 21 1 23 0;
+#X connect 21 2 22 0;
+#X connect 25 0 8 0;

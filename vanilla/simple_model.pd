@@ -6,7 +6,7 @@ float is_activated;
 array seq template_seq;
 #N struct template_seq float length float midi_track_index array midi_notes
 template_midi_note;
-#N canvas 401 104 879 604 10;
+#N canvas 276 23 888 616 10;
 #N canvas 1273 302 450 323 template_midi_note 0;
 #X obj 19 66 struct template_midi_note float pitch float velocity float
 duration float is_activated;
@@ -33,10 +33,10 @@ duration float is_activated;
 \; 16 0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0
 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0
 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \;
-32 1 8 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0
+16 0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0
 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0
-\; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; 32
-1 8 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0
+\; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; 16
+0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0
 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \;
 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; 16 0 0
 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0
@@ -87,8 +87,7 @@ template_seq_slot;
 #X connect 8 0 6 0;
 #X connect 9 0 8 0;
 #X connect 9 1 6 1;
-#X restore 121 161 pd get_slot;
-#X obj 184 31 loadbang;
+#X restore 339 235 pd get_slot;
 #N canvas 600 60 1048 861 init_song 0;
 #X obj 203 187 pointer;
 #X msg 223 118 \; pd-data clear;
@@ -165,90 +164,44 @@ template_seq_slot;
 #X connect 31 3 10 0;
 #X connect 31 4 9 1;
 #X connect 37 0 4 0;
-#X restore 184 89 pd init_song;
-#X obj 121 129 r get_slot;
-#X msg 417 147 bang;
-#X obj 417 220 s get_slot;
-#X msg 184 61 bang;
-#X obj 122 226 pointer;
-#X obj 122 195 unpack p f;
-#X obj 149 323 print length;
+#X restore 402 163 pd init_song;
+#X obj 339 203 r get_slot;
+#X msg 501 107 bang;
+#X obj 501 164 s get_slot;
+#X msg 402 108 bang;
+#X obj 340 300 pointer;
+#X obj 340 269 unpack p f;
 #N canvas 2168 326 713 461 template_seq_slot 0;
 #X obj 31 47 struct template_seq_slot float length float is_muted float
 midi_track_index array seq template_seq, f 96;
 #X restore 717 509 pd template_seq_slot;
-#N canvas 1152 199 450 461 template_seq 1;
+#N canvas 1152 199 450 461 template_seq 0;
 #X obj 48 61 struct template_seq float length float midi_track_index
 array midi_notes template_midi_note;
 #X restore 717 533 pd template_seq;
-#X obj 122 259 t p p;
-#X obj 82 327 pointer;
-#X msg 82 291 bang;
-#X obj 82 355 t b p;
-#N canvas 2637 123 450 346 edit_slot 0;
-#X obj 20 13 inlet;
-#X obj 20 44 t l;
-#X obj 341 15 inlet;
-#X obj 341 44 t p;
-#X obj 20 126 set template_seq_slot length is_muted midi_track_index
-;
-#X obj 74 13 inlet;
-#X obj 73 44 t f;
-#X obj 129 15 inlet;
-#X obj 128 46 t f;
-#X obj 235 12 inlet;
-#X obj 234 43 t f;
-#X connect 0 0 1 0;
-#X connect 1 0 4 0;
-#X connect 2 0 3 0;
-#X connect 3 0 4 3;
-#X connect 5 0 6 0;
-#X connect 6 0 4 0;
-#X connect 7 0 8 0;
-#X connect 8 0 4 1;
-#X connect 9 0 10 0;
-#X connect 10 0 4 2;
-#X restore 84 436 pd edit_slot;
-#X msg 83 389 32 1 8;
-#X obj 149 295 get template_seq_slot length is_muted midi_track_index
-;
-#X obj 470 328 print midi_track_index;
-#X obj 308 323 print is_muted;
-#N canvas 326 352 657 300 edit_seq 0;
-#X obj 43 59 inlet;
-#X obj 415 64 inlet;
-#X obj 415 93 t p;
-#X obj 70 152 element template_seq_slot length is_muted midi_track_index
-;
-#X obj 70 121 f 0;
-#X obj 43 90 t l b;
-#X obj 70 180 pointer;
-#X obj 43 228 set template_seq length midi_track_index;
-#X connect 0 0 5 0;
-#X connect 1 0 2 0;
-#X connect 2 0 3 1;
-#X connect 3 0 6 0;
-#X connect 4 0 3 0;
-#X connect 5 0 7 0;
-#X connect 5 1 4 0;
-#X connect 6 0 7 2;
-#X restore 88 481 pd edit_seq;
-#X msg 417 182 4 7;
-#X connect 3 0 11 0;
-#X connect 5 0 3 1;
-#X connect 6 0 3 0;
-#X connect 7 0 25 0;
-#X connect 9 0 5 0;
-#X connect 10 0 15 0;
-#X connect 11 0 10 0;
-#X connect 15 0 16 1;
-#X connect 15 1 21 0;
-#X connect 16 0 18 0;
-#X connect 17 0 16 0;
-#X connect 18 0 20 0;
-#X connect 18 1 19 4;
-#X connect 20 0 19 0;
-#X connect 21 0 12 0;
-#X connect 21 1 23 0;
-#X connect 21 2 22 0;
-#X connect 25 0 8 0;
+#X msg 501 136 4 7;
+#X obj 112 450 eeb_seq_slot_manager;
+#X msg 18 179 seq_slot get;
+#X msg 35 202 seq_slot set 32 1 8;
+#X msg 537 137 4 10, f 5;
+#X msg 92 261 seq set 8 16;
+#X msg 128 295 note get 3;
+#X msg 77 236 seq get 1;
+#X msg 143 320 note set 3 60 120 300 1;
+#X msg 154 346 note set 3 80 90 1000 0;
+#X connect 3 0 10 0;
+#X connect 4 0 3 1;
+#X connect 5 0 3 0;
+#X connect 6 0 13 0;
+#X connect 8 0 4 0;
+#X connect 9 0 14 1;
+#X connect 10 0 9 0;
+#X connect 13 0 7 0;
+#X connect 15 0 14 0;
+#X connect 16 0 14 0;
+#X connect 17 0 7 0;
+#X connect 18 0 14 0;
+#X connect 19 0 14 0;
+#X connect 20 0 14 0;
+#X connect 21 0 14 0;
+#X connect 22 0 14 0;

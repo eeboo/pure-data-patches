@@ -1,0 +1,342 @@
+#N struct template_midi_note float pitch float velocity float duration
+float is_activated;
+#N struct tpl_song float song_index float song_bpm array seq_slots
+template_seq_slot;
+#N struct template_seq_slot float length float is_muted float midi_track_index
+array seq template_seq;
+#N struct template_seq float length float midi_track_index array midi_notes
+template_midi_note;
+#N canvas 629 63 811 548 10;
+#X obj 48 33 inlet;
+#X obj 186 28 inlet;
+#X obj 186 63 t p, f 4;
+#N canvas 58 212 614 487 seq_slot 0;
+#X obj 50 265 get template_seq_slot length is_muted midi_track_index
+;
+#X obj 50 301 pack f f f;
+#X obj 498 22 inlet;
+#X obj 50 157 pointer;
+#X obj 50 15 inlet;
+#X obj 50 342 outlet;
+#X obj 50 89 t b;
+#X obj 91 116 set template_seq_slot length is_muted midi_track_index
+;
+#X obj 50 60 route get set get_seq;
+#X obj 402 196 f 0;
+#X obj 402 221 element template_seq_slot seq;
+#X obj 404 338 outlet;
+#X obj 91 88 list split 1;
+#X connect 0 0 1 0;
+#X connect 0 1 1 1;
+#X connect 0 2 1 2;
+#X connect 1 0 5 0;
+#X connect 2 0 3 1;
+#X connect 2 0 10 1;
+#X connect 2 0 7 3;
+#X connect 3 0 0 0;
+#X connect 4 0 8 0;
+#X connect 6 0 3 0;
+#X connect 8 0 6 0;
+#X connect 8 1 12 0;
+#X connect 8 2 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 11 0;
+#X connect 12 1 7 0;
+#X restore 114 146 pd seq_slot;
+#N canvas 581 64 699 643 seq 0;
+#X obj 360 30 inlet;
+#X obj 31 230 pointer;
+#X obj 31 28 inlet;
+#X obj 31 366 outlet;
+#X obj 31 113 t b;
+#X obj 74 198 set template_seq length midi_track_index;
+#X obj 31 325 pack f f;
+#X obj 31 289 get template_seq length midi_track_index;
+#X obj 327 358 outlet;
+#X obj 361 143 t p p p;
+#X obj 31 84 route get set get_note;
+#X obj 327 279 f;
+#X obj 327 315 element template_seq midi_notes;
+#X obj 73 158 list split 1;
+#X connect 0 0 9 0;
+#X connect 1 0 7 0;
+#X connect 2 0 10 0;
+#X connect 4 0 1 0;
+#X connect 6 0 3 0;
+#X connect 7 0 6 0;
+#X connect 7 1 6 1;
+#X connect 9 0 1 1;
+#X connect 9 1 5 2;
+#X connect 9 2 12 1;
+#X connect 10 0 4 0;
+#X connect 10 1 13 0;
+#X connect 10 2 11 0;
+#X connect 11 0 12 0;
+#X connect 12 0 8 0;
+#X connect 13 1 5 0;
+#X restore 81 185 pd seq;
+#N canvas 253 160 603 547 note 0;
+#X obj 173 79 inlet;
+#X obj 43 222 pointer;
+#X obj 43 80 inlet;
+#X obj 43 407 outlet;
+#X obj 43 125 route get set;
+#X obj 43 154 t b;
+#X obj 105 298 set template_midi_note pitch velocity duration is_activated
+;
+#X obj 43 331 get template_midi_note pitch velocity duration is_activated
+;
+#X obj 43 373 pack f f f f;
+#X obj 128 249 list split 2;
+#X connect 0 0 1 1;
+#X connect 0 0 6 4;
+#X connect 1 0 7 0;
+#X connect 2 0 4 0;
+#X connect 4 0 5 0;
+#X connect 4 1 9 0;
+#X connect 5 0 1 0;
+#X connect 7 0 8 0;
+#X connect 7 1 8 1;
+#X connect 7 2 8 2;
+#X connect 7 3 8 3;
+#X connect 8 0 3 0;
+#X connect 9 1 6 0;
+#X restore 48 224 pd note;
+#N canvas 134 130 717 462 song 0;
+#X obj 598 22 inlet;
+#X obj 57 158 pointer;
+#X obj 57 16 inlet;
+#X obj 57 343 outlet;
+#X obj 57 126 t b;
+#X obj 411 339 outlet;
+#X obj 57 302 pack f f;
+#X obj 411 276 f;
+#X obj 57 61 route get set get_seq_slot;
+#X obj 411 301 element tpl_song seq_slots;
+#X obj 327 142 set tpl_song song_index song_bpm;
+#X obj 57 266 get tpl_song song_index song_bpm;
+#X connect 0 0 1 1;
+#X connect 0 0 9 1;
+#X connect 0 0 10 2;
+#X connect 1 0 11 0;
+#X connect 2 0 8 0;
+#X connect 4 0 1 0;
+#X connect 6 0 3 0;
+#X connect 7 0 9 0;
+#X connect 8 0 4 0;
+#X connect 8 1 10 0;
+#X connect 8 2 7 0;
+#X connect 9 0 5 0;
+#X connect 11 0 6 0;
+#X connect 11 1 6 1;
+#X restore 147 114 pd song;
+#N canvas 347 104 790 538 message_router 0;
+#X obj 27 35 inlet;
+#X obj 27 72 route note seq seq_slot song;
+#X msg 51 282 get_note \$1;
+#X obj 50 253 eeb_get_element_at_index 2;
+#X obj 28 123 t l l l;
+#X obj 29 363 outlet;
+#X obj 107 363 outlet;
+#X obj 29 334 route list;
+#X obj 113 337 route list;
+#X obj 107 121 t l l;
+#X obj 418 194 eeb_get_element_at_index 1;
+#X obj 418 231 t f f;
+#X obj 210 123 t l l;
+#X obj 217 336 route list;
+#X obj 217 363 outlet;
+#X obj 448 357 outlet;
+#X msg 448 302 get_seq_slot \$1;
+#X msg 419 260 get_seq;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 1 1 9 0;
+#X connect 1 2 12 0;
+#X connect 1 3 15 0;
+#X connect 2 0 6 0;
+#X connect 3 0 2 0;
+#X connect 4 0 7 0;
+#X connect 4 1 3 0;
+#X connect 4 2 10 0;
+#X connect 7 0 5 0;
+#X connect 8 0 6 0;
+#X connect 9 0 8 0;
+#X connect 9 1 10 0;
+#X connect 10 0 11 0;
+#X connect 11 0 17 0;
+#X connect 11 1 16 0;
+#X connect 12 0 13 0;
+#X connect 12 1 10 0;
+#X connect 13 0 14 0;
+#X connect 16 0 15 0;
+#X connect 17 0 14 0;
+#X restore 48 72 pd message_router;
+#N canvas 1273 302 450 323 template_midi_note 0;
+#X obj 19 66 struct template_midi_note float pitch float velocity float
+duration float is_activated;
+#X restore 596 119 pd template_midi_note;
+#N canvas 719 335 450 300 data 0;
+#X scalar tpl_song 1 128 \; 16 0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \;
+0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0
+0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0
+0 0 \; 0 0 0 0 \; \; \; 16 0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0
+0 0 \; 80 90 1000 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \;
+0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0
+0 0 0 \; 0 0 0 0 \; \; \; 32 1 8 \; 8 16 \; 0 0 0 0 \; 0 0 0 0 \; 0
+0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0
+0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0
+0 \; 0 0 0 0 \; \; \; 16 0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0
+0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0
+\; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \;
+0 0 0 0 \; \; \; 16 0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \;
+0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0
+0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0
+0 0 \; \; \; 16 0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0
+0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0
+0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0
+\; \; \; 16 0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0
+\; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \;
+0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \;
+\; 16 0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0
+0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0
+0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \;
+16 0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0
+0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0
+\; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; 16
+0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0
+\; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \;
+0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; 16 0 0
+\; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0
+0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0
+0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; 16 0 0 \;
+16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0
+0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0
+0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; 16 0 0 \; 16
+1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0
+\; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \;
+0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; 16 0 0 \; 16 1 \;
+0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0
+0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0
+0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; 16 0 0 \; 16 1 \; 0 0
+0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0
+0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0
+\; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; 16 0 0 \; 16 1 \; 0 0 0 0
+\; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \;
+0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0
+0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; \;;
+#X restore 596 24 pd data;
+#N canvas 2168 326 713 461 template_seq_slot 0;
+#X obj 31 47 struct template_seq_slot float length float is_muted float
+midi_track_index array seq template_seq, f 96;
+#X restore 596 71 pd template_seq_slot;
+#N canvas 1152 199 450 461 template_seq 0;
+#X obj 48 61 struct template_seq float length float midi_track_index
+array midi_notes template_midi_note;
+#X restore 596 95 pd template_seq;
+#N canvas 0 22 450 300 tpl_song 0;
+#X obj 49 60 struct tpl_song float song_index float song_bpm array
+seq_slots template_seq_slot;
+#X restore 596 47 pd tpl_song;
+#X msg 248 59 bang;
+#X obj 311 27 loadbang;
+#X obj 48 265 outlet;
+#X obj 82 290 outlet;
+#X obj 116 311 outlet;
+#X obj 148 330 outlet;
+#X obj 249 25 inlet;
+#N canvas 392 23 1048 788 init_empty_song 0;
+#X obj 203 187 pointer;
+#X msg 223 118 \; pd-data clear;
+#X msg 203 158 traverse pd-data \, bang;
+#X obj 184 93 t b b b;
+#X msg 184 60 bang;
+#X text 219 59 click here to re-initialize;
+#X text 255 187 store pointer;
+#X text 313 123 send reset memory message;
+#X text 346 156 send get global data pointer message;
+#X obj 423 409 f 16;
+#X obj 203 217 t b p;
+#X obj 218 405 eebcounter 15;
+#X obj 233 523 f 0;
+#X obj 233 734 set template_seq length midi_track_index;
+#X msg 233 648 16 1;
+#X obj 428 574 set template_seq_slot length is_muted;
+#X msg 428 509 16 0;
+#X obj 428 543 unpack;
+#X obj 233 677 unpack;
+#X obj 532 704 f 16;
+#X obj 233 609 t b p b p;
+#X obj 218 474 t p b p b p;
+#X obj 203 246 f 0;
+#X obj 218 379 until;
+#X obj 218 350 f 16;
+#X obj 233 574 element template_seq_slot seq;
+#X obj 532 733 setsize template_seq midi_notes;
+#X obj 205 776 outlet;
+#X obj 203 306 t p b p b p;
+#X text 327 296 create song;
+#X text 515 455 init slots number;
+#X text 599 592 init slot;
+#X text 645 754 init sequence length;
+#X text 438 755 init sequence;
+#X obj 184 25 inlet;
+#X obj 203 276 append tpl_song song_index;
+#X obj 423 436 setsize tpl_song seq_slots;
+#X obj 218 436 element tpl_song seq_slots;
+#X connect 0 0 10 0;
+#X connect 2 0 0 0;
+#X connect 3 1 2 0;
+#X connect 3 2 1 0;
+#X connect 4 0 3 0;
+#X connect 9 0 36 0;
+#X connect 10 0 22 0;
+#X connect 10 1 35 1;
+#X connect 11 0 37 0;
+#X connect 12 0 25 0;
+#X connect 14 0 18 0;
+#X connect 16 0 17 0;
+#X connect 17 0 15 0;
+#X connect 17 1 15 1;
+#X connect 18 0 13 0;
+#X connect 18 1 13 1;
+#X connect 19 0 26 0;
+#X connect 20 0 14 0;
+#X connect 20 1 13 2;
+#X connect 20 2 19 0;
+#X connect 20 3 26 1;
+#X connect 21 1 12 0;
+#X connect 21 2 25 1;
+#X connect 21 3 16 0;
+#X connect 21 4 15 2;
+#X connect 22 0 35 0;
+#X connect 23 0 11 0;
+#X connect 24 0 23 0;
+#X connect 25 0 20 0;
+#X connect 28 0 27 0;
+#X connect 28 1 24 0;
+#X connect 28 2 37 1;
+#X connect 28 3 9 0;
+#X connect 28 4 36 1;
+#X connect 34 0 4 0;
+#X connect 35 0 28 0;
+#X connect 37 0 21 0;
+#X restore 248 85 pd init_empty_song;
+#X connect 0 0 7 0;
+#X connect 1 0 2 0;
+#X connect 2 0 6 1;
+#X connect 3 0 16 0;
+#X connect 3 1 4 1;
+#X connect 4 0 17 0;
+#X connect 4 1 5 1;
+#X connect 5 0 18 0;
+#X connect 6 0 15 0;
+#X connect 6 1 3 1;
+#X connect 7 0 5 0;
+#X connect 7 1 4 0;
+#X connect 7 2 3 0;
+#X connect 7 3 6 0;
+#X connect 13 0 20 0;
+#X connect 14 0 13 0;
+#X connect 19 0 13 0;
+#X connect 20 0 6 1;

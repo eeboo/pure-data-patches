@@ -1,12 +1,14 @@
 #N struct template_midi_note float pitch float velocity float duration
 float is_activated;
-#N struct tpl_song float song_index float song_bpm array seq_slots
-template_seq_slot;
+#N struct global float track_number array midi_tracks midi_track;
+#N struct midi_track float channel float is_muted;
 #N struct template_seq_slot float length float is_muted float midi_track_index
 array seq template_seq;
 #N struct template_seq float length float midi_track_index array midi_notes
 template_midi_note;
-#N canvas 629 63 811 548 10;
+#N struct tpl_song float song_index float song_bpm array seq_slots
+template_seq_slot;
+#N canvas 157 145 811 571 10;
 #X obj 48 33 inlet;
 #X obj 186 28 inlet;
 #X obj 186 63 t p, f 4;
@@ -177,54 +179,7 @@ template_midi_note;
 duration float is_activated;
 #X restore 596 119 pd template_midi_note;
 #N canvas 719 335 450 300 data 0;
-#X scalar tpl_song 1 128 \; 16 0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \;
-0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0
-0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0
-0 0 \; 0 0 0 0 \; \; \; 16 0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0
-0 0 \; 80 90 1000 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \;
-0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0
-0 0 0 \; 0 0 0 0 \; \; \; 32 1 8 \; 8 16 \; 0 0 0 0 \; 0 0 0 0 \; 0
-0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0
-0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0
-0 \; 0 0 0 0 \; \; \; 16 0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0
-0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0
-\; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \;
-0 0 0 0 \; \; \; 16 0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \;
-0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0
-0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0
-0 0 \; \; \; 16 0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0
-0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0
-0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0
-\; \; \; 16 0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0
-\; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \;
-0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \;
-\; 16 0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0
-0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0
-0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \;
-16 0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0
-0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0
-\; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; 16
-0 0 \; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0
-\; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \;
-0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; 16 0 0
-\; 16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0
-0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0
-0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; 16 0 0 \;
-16 1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0
-0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0
-0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; 16 0 0 \; 16
-1 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0
-\; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \;
-0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; 16 0 0 \; 16 1 \;
-0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0
-0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0
-0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; 16 0 0 \; 16 1 \; 0 0
-0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0
-0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0
-\; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; 16 0 0 \; 16 1 \; 0 0 0 0
-\; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \;
-0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; 0
-0 0 0 \; 0 0 0 0 \; 0 0 0 0 \; \; \; \;;
+#X scalar global 0 \; 0 0 \; \;;
 #X restore 596 24 pd data;
 #N canvas 2168 326 713 461 template_seq_slot 0;
 #X obj 31 47 struct template_seq_slot float length float is_muted float
@@ -245,7 +200,14 @@ seq_slots template_seq_slot;
 #X obj 116 311 outlet;
 #X obj 148 330 outlet;
 #X obj 249 25 inlet;
-#N canvas 392 23 1048 788 init_empty_song 0;
+#N canvas 415 23 450 300 midi_track 0;
+#X obj 19 23 struct midi_track float channel float is_muted;
+#X restore 596 176 pd midi_track;
+#N canvas 415 23 450 300 global 0;
+#X obj 29 30 struct global float track_number array midi_tracks midi_track
+;
+#X restore 598 152 pd global;
+#N canvas 392 23 1048 788 init_model 1;
 #X obj 203 187 pointer;
 #X msg 223 118 \; pd-data clear;
 #X msg 203 158 traverse pd-data \, bang;
@@ -321,7 +283,31 @@ seq_slots template_seq_slot;
 #X connect 34 0 4 0;
 #X connect 35 0 28 0;
 #X connect 37 0 21 0;
-#X restore 248 85 pd init_empty_song;
+#X restore 248 85 pd init_model;
+#N canvas 252 184 450 300 init_global 1;
+#X obj 48 181 pointer;
+#X msg 68 112 \; pd-data clear;
+#X msg 48 152 traverse pd-data \, bang;
+#X obj 29 87 t b b b;
+#X msg 29 54 bang;
+#X text 64 53 click here to re-initialize;
+#X text 100 181 store pointer;
+#X text 158 117 send reset memory message;
+#X text 191 150 send get global data pointer message;
+#X obj 48 211 t b p;
+#X obj 29 19 inlet;
+#X obj 48 270 append global track_number;
+#X obj 48 240 f 16;
+#X connect 0 0 9 0;
+#X connect 2 0 0 0;
+#X connect 3 1 2 0;
+#X connect 3 2 1 0;
+#X connect 4 0 3 0;
+#X connect 9 0 12 0;
+#X connect 9 1 11 1;
+#X connect 10 0 4 0;
+#X connect 12 0 11 0;
+#X restore 250 133 pd init_global;
 #X connect 0 0 7 0;
 #X connect 1 0 2 0;
 #X connect 2 0 6 1;
@@ -336,7 +322,7 @@ seq_slots template_seq_slot;
 #X connect 7 1 4 0;
 #X connect 7 2 3 0;
 #X connect 7 3 6 0;
-#X connect 13 0 20 0;
+#X connect 13 0 22 0;
 #X connect 14 0 13 0;
 #X connect 19 0 13 0;
-#X connect 20 0 6 1;
+#X connect 22 0 6 1;

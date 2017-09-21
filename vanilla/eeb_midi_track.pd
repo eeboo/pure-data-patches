@@ -1,0 +1,5 @@
+#N canvas 1057 536 562 429 10;
+#X obj 31 20 inlet;
+#X text 71 20 tick;
+#X obj 31 55 t b;
+#X connect 0 0 2 0;

@@ -1,0 +1,16 @@
+#N canvas 869 489 450 300 10;
+#X obj 42 68 eeb_bpm;
+#X obj 94 29 nbx 5 14 30 300 0 0 empty empty empty 0 -8 0 10 -262144
+-1 -1 100 256 0;
+#X obj 42 169 bng 15 60 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 41 130 eebcounter;
+#X obj 111 90 nbx 5 14 100 120 0 0 empty empty empty 0 -8 0 10 -262144
+-1 -1 120 256 0;
+#X obj 42 15 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+;
+#X connect 0 0 3 0;
+#X connect 1 0 0 1;
+#X connect 3 1 2 0;
+#X connect 4 0 3 1;
+#X connect 5 0 0 0;

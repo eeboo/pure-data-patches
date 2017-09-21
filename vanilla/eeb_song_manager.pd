@@ -1,14 +1,13 @@
 #N struct template_midi_note float pitch float velocity float duration
 float is_activated;
-#N struct global float track_number array midi_tracks midi_track;
-#N struct midi_track float channel float is_muted;
+#N struct tpl_song float song_index float song_bpm;
 #N struct template_seq_slot float length float is_muted float midi_track_index
 array seq template_seq;
 #N struct template_seq float length float midi_track_index array midi_notes
 template_midi_note;
-#N struct tpl_song float song_index float song_bpm array seq_slots
-template_seq_slot;
-#N canvas 157 145 811 571 10;
+#N struct midi_track float channel float is_muted;
+#N struct global float track_number array midi_tracks midi_track;
+#N canvas 150 43 811 571 10;
 #X obj 48 33 inlet;
 #X obj 186 28 inlet;
 #X obj 186 63 t p, f 4;
@@ -177,22 +176,21 @@ template_seq_slot;
 #N canvas 1273 302 450 323 template_midi_note 0;
 #X obj 19 66 struct template_midi_note float pitch float velocity float
 duration float is_activated;
-#X restore 596 119 pd template_midi_note;
+#X restore 660 184 pd template_midi_note;
 #N canvas 719 335 450 300 data 0;
-#X scalar global 0 \; 0 0 \; \;;
-#X restore 596 24 pd data;
+#X scalar tpl_song 0 0 \;;
+#X restore 663 20 pd data;
 #N canvas 2168 326 713 461 template_seq_slot 0;
 #X obj 31 47 struct template_seq_slot float length float is_muted float
 midi_track_index array seq template_seq, f 96;
-#X restore 596 71 pd template_seq_slot;
+#X restore 660 129 pd template_seq_slot;
 #N canvas 1152 199 450 461 template_seq 0;
 #X obj 48 61 struct template_seq float length float midi_track_index
 array midi_notes template_midi_note;
-#X restore 596 95 pd template_seq;
-#N canvas 0 22 450 300 tpl_song 0;
-#X obj 49 60 struct tpl_song float song_index float song_bpm array
-seq_slots template_seq_slot;
-#X restore 596 47 pd tpl_song;
+#X restore 660 157 pd template_seq;
+#N canvas 415 23 450 300 tpl_song 1;
+#X obj 49 60 struct tpl_song float song_index float song_bpm;
+#X restore 661 73 pd tpl_song;
 #X msg 248 59 bang;
 #X obj 311 27 loadbang;
 #X obj 48 265 outlet;
@@ -200,14 +198,14 @@ seq_slots template_seq_slot;
 #X obj 116 311 outlet;
 #X obj 148 330 outlet;
 #X obj 249 25 inlet;
-#N canvas 415 23 450 300 midi_track 0;
+#N canvas 318 28 450 323 midi_track 0;
 #X obj 19 23 struct midi_track float channel float is_muted;
-#X restore 596 176 pd midi_track;
+#X restore 661 102 pd midi_track;
 #N canvas 415 23 450 300 global 0;
 #X obj 29 30 struct global float track_number array midi_tracks midi_track
 ;
-#X restore 598 152 pd global;
-#N canvas 392 23 1048 788 init_model 1;
+#X restore 661 47 pd global;
+#N canvas 392 23 1048 788 init_model 0;
 #X obj 203 187 pointer;
 #X msg 223 118 \; pd-data clear;
 #X msg 203 158 traverse pd-data \, bang;
@@ -284,30 +282,6 @@ seq_slots template_seq_slot;
 #X connect 35 0 28 0;
 #X connect 37 0 21 0;
 #X restore 248 85 pd init_model;
-#N canvas 252 184 450 300 init_global 1;
-#X obj 48 181 pointer;
-#X msg 68 112 \; pd-data clear;
-#X msg 48 152 traverse pd-data \, bang;
-#X obj 29 87 t b b b;
-#X msg 29 54 bang;
-#X text 64 53 click here to re-initialize;
-#X text 100 181 store pointer;
-#X text 158 117 send reset memory message;
-#X text 191 150 send get global data pointer message;
-#X obj 48 211 t b p;
-#X obj 29 19 inlet;
-#X obj 48 270 append global track_number;
-#X obj 48 240 f 16;
-#X connect 0 0 9 0;
-#X connect 2 0 0 0;
-#X connect 3 1 2 0;
-#X connect 3 2 1 0;
-#X connect 4 0 3 0;
-#X connect 9 0 12 0;
-#X connect 9 1 11 1;
-#X connect 10 0 4 0;
-#X connect 12 0 11 0;
-#X restore 250 133 pd init_global;
 #X connect 0 0 7 0;
 #X connect 1 0 2 0;
 #X connect 2 0 6 1;

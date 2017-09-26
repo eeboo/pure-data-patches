@@ -1,6 +1,10 @@
 #N struct list_el float x array els el;
 #N struct el float x float y float z;
+<<<<<<< HEAD
 #N canvas 792 124 1091 823 10;
+=======
+#N canvas 367 23 545 679 10;
+>>>>>>> fd155140e028ecfa18157c6666aa285883f1f9e7
 #N canvas 0 22 450 300 data 0;
 #X scalar list_el 0 \; 10 23 56 \; 0 0 0 \; 0 0 0 \; 150 78 45 \; 0
 0 0 \; 29 65 78 \; 0 0 0 \; 0 0 0 \; 0 0 0 \; 0 0 0 \; 67 88 65 \;
@@ -12,8 +16,13 @@
 #X restore 995 61 pd list_el;
 #N canvas 1447 480 450 323 el 0;
 #X obj 41 48 struct el float x float y float z;
+<<<<<<< HEAD
 #X restore 995 89 pd el;
 #N canvas 46 177 718 739 init 1;
+=======
+#X restore 480 75 pd el;
+#N canvas 1202 266 718 693 init 0;
+>>>>>>> fd155140e028ecfa18157c6666aa285883f1f9e7
 #X obj 89 239 pointer;
 #X msg 109 170 \; pd-data clear;
 #X msg 89 210 traverse pd-data \, bang;
@@ -63,6 +72,7 @@
 #X restore 253 149 pd init;
 #X obj 115 52 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
+<<<<<<< HEAD
 #X obj 253 187 pointer;
 #X obj 115 115 t b b;
 #X obj 41 231 pointer;
@@ -78,6 +88,31 @@
 #X connect 3 0 5 0;
 #X connect 4 0 6 0;
 #X connect 5 0 7 1;
+=======
+#X obj 46 152 pointer;
+#X obj 46 229 getsize list_el els;
+#X obj 46 260 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 0 256 0;
+#X obj 45 322 until;
+#X obj 46 188 t p p;
+#X obj 44 392 element list_el els;
+#X obj 45 360 eebcounter;
+#X obj 45 288 t f f;
+#X obj 91 332 -1;
+#X obj 44 456 get el x;
+#X obj 43 494 expr if($f1 == $f2 \, 1 \, -1);
+#X obj 162 111 t b b;
+#X obj 44 420 t p p;
+#X obj 43 559 pointer;
+#X obj 43 531 select 1;
+#X obj 43 594 get el x;
+#X obj 43 633 print found;
+#X msg 196 461 29;
+#X text 87 23 click here to find an el where x = 29;
+#X connect 3 0 5 1;
+#X connect 4 0 16 0;
+#X connect 5 0 9 0;
+>>>>>>> fd155140e028ecfa18157c6666aa285883f1f9e7
 #X connect 6 0 7 0;
 #X connect 6 1 13 0;
 #X connect 7 0 12 0;

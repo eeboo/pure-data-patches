@@ -1,6 +1,6 @@
 #N struct list_el float x array els el;
 #N struct el float x float y float z;
-#N canvas 2142 212 545 679 10;
+#N canvas 367 23 545 679 10;
 #N canvas 0 22 450 300 data 0;
 #X scalar list_el 0 \; 10 0 0 \; 0 0 0 \; 0 0 0 \; 150 0 0 \; 0 0 0
 \; 29 0 0 \; 0 0 0 \; 0 0 0 \; 0 0 0 \; 0 0 0 \; 67 0 0 \; 0 0 0 \;
@@ -13,7 +13,7 @@
 #N canvas 415 23 450 300 el 0;
 #X obj 41 48 struct el float x float y float z;
 #X restore 480 75 pd el;
-#N canvas 1202 266 718 693 init 1;
+#N canvas 1202 266 718 693 init 0;
 #X obj 89 239 pointer;
 #X msg 109 170 \; pd-data clear;
 #X msg 89 210 traverse pd-data \, bang;
@@ -62,8 +62,8 @@
 -1;
 #X obj 46 152 pointer;
 #X obj 46 229 getsize list_el els;
-#X obj 46 260 nbx 5 14 -1e+037 1e+037 0 0 empty empty empty 0 -8 0
-10 -262144 -1 -1 20 256 0;
+#X obj 46 260 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 0 256 0;
 #X obj 45 322 until;
 #X obj 46 188 t p p;
 #X obj 44 392 element list_el els;

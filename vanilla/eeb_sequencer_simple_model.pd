@@ -1,0 +1,284 @@
+#N struct MidiTrack float channel float isMuted array slots SeqSlot
+;
+#N struct SeqSlot float isMuted float id array seq Seq;
+#N struct Seq float length array midiNotes MidiNote float isMuted;
+#N struct MidiNote float pitch float velocity float duration float
+isActivated float beatTime float isActivated;
+#N struct Song float index float bpm symbol name array midiTracks MidiTrack
+;
+#N struct App array songs Song;
+#N canvas 131 228 811 594 10;
+#X obj 48 33 inlet;
+#X obj 186 28 inlet;
+#X obj 186 63 t p, f 4;
+#N canvas 1004 330 790 538 message_router 0;
+#X obj 27 35 inlet;
+#X msg 51 282 get_note \$1;
+#X obj 50 253 eeb_get_element_at_index 2;
+#X obj 28 123 t l l l;
+#X obj 29 363 outlet;
+#X obj 107 363 outlet;
+#X obj 29 334 route list;
+#X obj 113 337 route list;
+#X obj 107 121 t l l;
+#X obj 418 194 eeb_get_element_at_index 1;
+#X obj 418 231 t f f;
+#X obj 210 123 t l l;
+#X obj 217 336 route list;
+#X obj 217 363 outlet;
+#X obj 448 357 outlet;
+#X msg 448 302 get_seq_slot \$1;
+#X msg 419 260 get_seq;
+#X obj 27 72 route note seq slot track song app;
+#X connect 0 0 17 0;
+#X connect 1 0 5 0;
+#X connect 2 0 1 0;
+#X connect 3 0 6 0;
+#X connect 3 1 2 0;
+#X connect 3 2 9 0;
+#X connect 6 0 4 0;
+#X connect 7 0 5 0;
+#X connect 8 0 7 0;
+#X connect 8 1 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 16 0;
+#X connect 10 1 15 0;
+#X connect 11 0 12 0;
+#X connect 11 1 9 0;
+#X connect 12 0 13 0;
+#X connect 15 0 14 0;
+#X connect 16 0 13 0;
+#X connect 17 0 3 0;
+#X connect 17 1 8 0;
+#X connect 17 2 11 0;
+#X connect 17 3 14 0;
+#X restore 48 72 pd message_router;
+#N canvas 719 335 450 300 data 0;
+#X scalar MidiTrack 1 0 \; 0 0 \; 16 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0
+0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0
+0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0
+0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0
+0 0 0 0 0 \; \; \; 0 0 \; 16 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0
+0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0
+\; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0
+0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0
+\; \; \; 0 0 \; 16 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \;
+0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0
+0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \;
+0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; \; \; 0
+0 \; 16 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0
+0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0
+0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0
+0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; \; \; 0 0 \; 16 0
+\; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0
+0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0
+\; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0
+0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; \; \; 0 0 \; 16 0 \; 0 0 0
+0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \;
+0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0
+0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \;
+0 0 0 0 0 0 \; 0 0 0 0 0 0 \; \; \; 0 0 \; 16 0 \; 0 0 0 0 0 0 \; 0
+0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0
+0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0
+0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0
+0 \; 0 0 0 0 0 0 \; \; \; 0 0 \; 16 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0
+\; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0
+0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0
+\; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0
+0 0 0 0 \; \; \; 0 0 \; 16 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0
+0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \;
+0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0
+0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \;
+\; \; 0 0 \; 16 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0
+0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0
+0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0
+0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; \; \; 0 0
+\; 16 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0
+\; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0
+0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0
+\; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; \; \; 0 0 \; 16 0 \;
+0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0
+0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \;
+0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0
+0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; \; \; 0 0 \; 16 0 \; 0 0 0 0 0
+0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0
+0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0
+0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0
+0 0 0 0 0 \; 0 0 0 0 0 0 \; \; \; 0 0 \; 16 0 \; 0 0 0 0 0 0 \; 0 0
+0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0
+\; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0
+0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0
+\; 0 0 0 0 0 0 \; \; \; 0 0 \; 16 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \;
+0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0
+0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \;
+0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0
+0 0 \; \; \; 0 0 \; 16 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0
+0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0
+0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0
+0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; 0 0 0 0 0 0 \; \;
+\; \;;
+#X restore 663 20 pd data;
+#X msg 248 59 bang;
+#X obj 311 27 loadbang;
+#X obj 249 25 inlet;
+#N canvas 490 163 1095 895 init_model 0;
+#X obj 203 187 pointer;
+#X msg 223 118 \; pd-data clear;
+#X msg 203 158 traverse pd-data \, bang;
+#X obj 184 93 t b b b;
+#X msg 184 60 bang;
+#X text 219 59 click here to re-initialize;
+#X text 255 187 store pointer;
+#X text 313 123 send reset memory message;
+#X text 346 156 send get global data pointer message;
+#X obj 423 409 f 16;
+#X obj 203 217 t b p;
+#X obj 218 405 eebcounter 15;
+#X obj 233 523 f 0;
+#X msg 428 509 16 0;
+#X obj 428 543 unpack;
+#X obj 532 704 f 16;
+#X obj 233 609 t b p b p;
+#X obj 218 474 t p b p b p;
+#X obj 218 379 until;
+#X obj 218 350 f 16;
+#X obj 205 776 outlet;
+#X obj 203 306 t p b p b p;
+#X text 327 296 create song;
+#X text 515 455 init slots number;
+#X text 599 592 init slot;
+#X text 645 754 init sequence length;
+#X text 438 755 init sequence;
+#X obj 184 25 inlet;
+#X obj 532 733 setsize Seq midiNotes;
+#X obj 233 734 set Seq length;
+#X msg 233 648 16;
+#X obj 203 246 f 1;
+#X obj 233 574 element SeqSlot seq;
+#X obj 428 574 set SeqSlot length isMuted;
+#X obj 203 276 append MidiTrack channel;
+#X obj 423 436 setsize MidiTrack slots;
+#X obj 218 436 element MidiTrack slots;
+#X connect 0 0 10 0;
+#X connect 2 0 0 0;
+#X connect 3 1 2 0;
+#X connect 3 2 1 0;
+#X connect 4 0 3 0;
+#X connect 9 0 35 0;
+#X connect 10 0 31 0;
+#X connect 10 1 34 1;
+#X connect 11 0 36 0;
+#X connect 12 0 32 0;
+#X connect 13 0 14 0;
+#X connect 14 0 33 0;
+#X connect 14 1 33 1;
+#X connect 15 0 28 0;
+#X connect 16 0 30 0;
+#X connect 16 1 29 1;
+#X connect 16 2 15 0;
+#X connect 16 3 28 1;
+#X connect 17 1 12 0;
+#X connect 17 2 32 1;
+#X connect 17 3 13 0;
+#X connect 17 4 33 2;
+#X connect 18 0 11 0;
+#X connect 19 0 18 0;
+#X connect 21 0 20 0;
+#X connect 21 1 19 0;
+#X connect 21 2 36 1;
+#X connect 21 3 9 0;
+#X connect 21 4 35 1;
+#X connect 27 0 4 0;
+#X connect 30 0 29 0;
+#X connect 31 0 34 0;
+#X connect 32 0 16 0;
+#X connect 34 0 21 0;
+#X connect 36 0 17 0;
+#X restore 248 85 pd init_model;
+#N canvas 1273 302 450 323 MidiNote 0;
+#X obj 20 66 struct MidiNote float pitch float velocity float duration
+float isActivated float beatTime;
+#X restore 665 185 pd MidiNote;
+#N canvas 1152 199 450 461 Seq 0;
+#X obj 48 61 struct Seq float length array midiNotes MidiNote;
+#X restore 665 158 pd Seq;
+#N canvas 719 335 613 552 SeqSlot 0;
+#X obj 35 228 pack f f;
+#X obj 35 273 outlet;
+#X obj 224 157 unpack f f;
+#X obj 188 13 inlet;
+#X obj 364 11 inlet;
+#X obj 496 249 outlet;
+#X obj 35 189 get SeqSlot id isMuted;
+#X obj 224 189 set SeqSlot id isMuted;
+#X obj 188 79 eeb_data_model SeqSlot Seq;
+#X obj 35 363 struct SeqSlot float isMuted float id array seq Seq;
+#X connect 0 0 1 0;
+#X connect 2 0 7 0;
+#X connect 2 1 7 1;
+#X connect 3 0 8 0;
+#X connect 4 0 7 2;
+#X connect 4 0 8 1;
+#X connect 6 0 0 0;
+#X connect 6 1 0 1;
+#X connect 8 0 6 0;
+#X connect 8 1 2 0;
+#X connect 8 2 5 0;
+#X restore 383 316 pd SeqSlot;
+#N canvas 1170 330 647 481 MidiTrack 1;
+#X obj 18 243 get MidiTrack channel isMuted;
+#X obj 18 282 pack f f;
+#X obj 18 327 outlet;
+#X obj 207 243 set MidiTrack channel isMuted;
+#X obj 207 211 unpack f f;
+#X obj 171 67 inlet;
+#X obj 347 65 inlet;
+#X obj 479 303 outlet;
+#X obj 171 133 eeb_data_model MidiTrack slots;
+#X obj 16 373 struct MidiTrack float channel float isMuted array slots
+SeqSlot;
+#X connect 0 0 1 0;
+#X connect 0 1 1 1;
+#X connect 1 0 2 0;
+#X connect 4 0 3 0;
+#X connect 4 1 3 1;
+#X connect 5 0 8 0;
+#X connect 6 0 8 1;
+#X connect 6 0 3 2;
+#X connect 8 0 0 0;
+#X connect 8 1 4 0;
+#X connect 8 2 7 0;
+#X restore 245 283 pd MidiTrack;
+#N canvas 415 23 450 300 Song 0;
+#X obj 49 60 struct Song float index float bpm symbol name array midiTracks
+MidiTrack;
+#X restore 664 74 pd Song;
+#N canvas 415 23 450 300 App 0;
+#X obj 29 30 struct App array songs Song;
+#X restore 664 48 pd App;
+#X msg 127 236 get;
+#X msg 157 213 set 2 0;
+#X obj 245 327 print track;
+#X msg 233 220 child \$1;
+#X msg 401 213 set 3 2;
+#X obj 383 379 print seqSlot;
+#X obj 402 243 t l b;
+#X msg 380 145 get 2;
+#X obj 380 173 t l b;
+#X connect 0 0 3 0;
+#X connect 1 0 2 0;
+#X connect 6 0 5 0;
+#X connect 7 0 5 0;
+#X connect 8 0 12 1;
+#X connect 11 0 20 0;
+#X connect 12 0 17 0;
+#X connect 12 1 11 1;
+#X connect 15 0 12 0;
+#X connect 16 0 12 0;
+#X connect 18 0 12 0;
+#X connect 19 0 21 0;
+#X connect 21 0 11 0;
+#X connect 21 1 18 0;
+#X connect 22 0 23 0;
+#X connect 23 0 11 0;
+#X connect 23 1 18 0;

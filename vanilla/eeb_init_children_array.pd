@@ -1,0 +1,45 @@
+#N canvas 2033 337 748 557 10;
+#X obj 37 23 inlet;
+#X obj 37 56 t p;
+#X obj 52 165 until;
+#X obj 37 92 t p b p b p;
+#X obj 183 66 loadbang;
+#X obj 94 164 - 1;
+#X obj 52 136 f;
+#X obj 167 193 f;
+#X obj 52 191 eebcounter;
+#X obj 37 421 outlet;
+#X obj 52 395 outlet;
+#X obj 52 253 element \$1 \$3;
+#X obj 167 220 setsize \$1 \$3;
+#X obj 64 347 set \$2 index;
+#X obj 183 97 f \$4;
+#X obj 52 219 t f f;
+#X obj 64 321 f;
+#X text 224 320 ARGUMENTS   \$1 Parent class name  \$2 Child class
+name \$3 Child attribute name \$4 attribute array size, f
+23;
+#X obj 52 281 t p b p;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 2 0 8 0;
+#X connect 3 0 9 0;
+#X connect 3 1 6 0;
+#X connect 3 2 11 1;
+#X connect 3 3 7 0;
+#X connect 3 4 12 1;
+#X connect 4 0 14 0;
+#X connect 5 0 8 1;
+#X connect 6 0 2 0;
+#X connect 7 0 12 0;
+#X connect 8 0 15 0;
+#X connect 11 0 18 0;
+#X connect 14 0 5 0;
+#X connect 14 0 6 1;
+#X connect 14 0 7 1;
+#X connect 15 0 11 0;
+#X connect 15 1 16 1;
+#X connect 16 0 13 0;
+#X connect 18 0 10 0;
+#X connect 18 1 16 0;
+#X connect 18 2 13 1;

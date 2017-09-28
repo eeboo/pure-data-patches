@@ -1,0 +1,30 @@
+#N struct SeqSlot float isMuted array seq Seq float index;
+#N struct Seq float length array midiNotes MidiNote float isMuted float
+index float resolution;
+#N struct MidiNote float pitch float velocity float duration float
+isActivated float beatTime float index;
+#N struct MidiTrack float isMuted array slots SeqSlot float index;
+#N struct Song float bpm symbol name array midiTracks MidiTrack float
+index;
+#N struct App array songs Song float resolution symbol version;
+#N canvas 423 98 594 753 10;
+#X obj 127 206 eeb_sequencer_simple_model;
+#X msg 127 130 app 0 song 0 track 1 slot 2 seq 0 note 2;
+#X msg 66 61 app 0 song 0 track 1;
+#X msg 42 34 app 0 song 0;
+#X msg 87 84 app 0 song 0 track 1 slot 0;
+#X msg 109 107 app 0 song 0 track 1 slot 8 seq 0;
+#X msg 19 9 app 0;
+#X obj 280 242 print type;
+#X obj 127 245 print pointer;
+#X obj 484 41 eeb_sequencer_data;
+#X obj 484 9 loadbang;
+#X connect 0 0 8 0;
+#X connect 0 1 7 0;
+#X connect 1 0 0 0;
+#X connect 2 0 0 0;
+#X connect 3 0 0 0;
+#X connect 4 0 0 0;
+#X connect 5 0 0 0;
+#X connect 6 0 0 0;
+#X connect 10 0 9 0;

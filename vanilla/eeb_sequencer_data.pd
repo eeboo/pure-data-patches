@@ -1,0 +1,124 @@
+#N struct MidiNote float pitch float velocity float duration float
+isActivated float beatTime float index;
+#N struct Seq float length array midiNotes MidiNote float isMuted float
+index float resolution;
+#N struct SeqSlot float isMuted array seq Seq float index;
+#N struct MidiTrack float isMuted array slots SeqSlot float index;
+#N struct Song float bpm symbol name array midiTracks MidiTrack float
+index;
+#N struct App array songs Song float resolution symbol version;
+#N canvas 2173 313 336 225 10;
+#N canvas 998 374 538 425 MidiNote 0;
+#X obj 11 18 struct MidiNote float pitch float velocity float duration
+float isActivated float beatTime float index;
+#X restore 31 185 pd MidiNote;
+#N canvas 1086 311 450 553 Seq 0;
+#X obj 10 15 struct Seq float length array midiNotes MidiNote float
+isMuted float index float resolution;
+#X restore 61 151 pd Seq;
+#N canvas 923 312 415 113 SeqSlot 0;
+#X obj 14 13 struct SeqSlot float isMuted array seq Seq float index
+;
+#X restore 37 116 pd SeqSlot;
+#N canvas 682 345 399 470 MidiTrack 0;
+#X obj 10 18 struct MidiTrack float isMuted array slots SeqSlot float
+index;
+#X restore 25 82 pd MidiTrack;
+#N canvas 621 395 466 141 Song 0;
+#X obj 15 14 struct Song float bpm symbol name array midiTracks MidiTrack
+float index;
+#X restore 55 47 pd Song;
+#N canvas 429 293 390 136 App 0;
+#X obj 12 12 struct App array songs Song float resolution symbol version
+;
+#X restore 61 14 pd App;
+#X msg 130 51 bang;
+#N canvas 0 23 586 787 init_model 0;
+#X msg 223 118 \; pd-data clear;
+#X msg 203 158 traverse pd-data \, bang;
+#X obj 184 93 t b b b;
+#X msg 184 60 bang;
+#X text 219 59 click here to re-initialize;
+#X text 313 123 send reset memory message;
+#X text 346 156 send get global data pointer message;
+#X obj 202 402 outlet;
+#X obj 184 25 inlet;
+#X msg 346 406 symbol eeboo_song;
+#X obj 329 455 eeb_init_children_array Song MidiTrack midiTracks 16
+;
+#X obj 413 554 set MidiTrack isMuted;
+#X obj 346 430 set -symbol Song name;
+#X obj 394 498 t p b p;
+#X obj 394 580 eeb_init_children_array MidiTrack SeqSlot slots 16;
+#X obj 501 630 t p b p;
+#X obj 520 679 set SeqSlot isMuted;
+#X obj 413 525 f 0;
+#X obj 520 654 f 0;
+#X obj 601 749 t p b p;
+#X obj 501 702 eeb_init_children_array SeqSlot Seq seq 1;
+#X obj 601 825 eeb_init_children_array Seq MidiNote midiNotes 64;
+#X obj 836 860 t p b p;
+#X obj 855 912 set MidiNote pitch velocity duration isActivated beatTime
+;
+#X msg 855 886 60 100 240 0 0;
+#X obj 620 801 set Seq length isMuted resolution;
+#X msg 620 775 16 0 4;
+#X obj 203 212 f 480;
+#X obj 203 241 append App resolution;
+#X obj 203 182 t b p;
+#X obj 202 266 t p p b p;
+#X msg 236 293 symbol 0.0.1;
+#X obj 236 317 set -symbol App version;
+#X obj 219 339 eeb_init_children_array App Song songs 1;
+#X obj 329 376 t p b p b p;
+#X obj 492 431 set Song index bpm;
+#X msg 492 403 0 120;
+#X obj 118 186 pointer;
+#X connect 1 0 37 0;
+#X connect 2 1 1 0;
+#X connect 2 2 0 0;
+#X connect 3 0 2 0;
+#X connect 8 0 3 0;
+#X connect 9 0 12 0;
+#X connect 10 1 13 0;
+#X connect 13 0 14 0;
+#X connect 13 1 17 0;
+#X connect 13 2 11 1;
+#X connect 14 1 15 0;
+#X connect 15 0 20 0;
+#X connect 15 1 18 0;
+#X connect 15 2 16 1;
+#X connect 17 0 11 0;
+#X connect 18 0 16 0;
+#X connect 19 0 21 0;
+#X connect 19 1 26 0;
+#X connect 19 2 25 3;
+#X connect 20 1 19 0;
+#X connect 21 1 22 0;
+#X connect 22 1 24 0;
+#X connect 22 2 23 5;
+#X connect 24 0 23 0;
+#X connect 26 0 25 0;
+#X connect 27 0 28 0;
+#X connect 28 0 30 0;
+#X connect 29 0 27 0;
+#X connect 29 1 28 1;
+#X connect 30 0 7 0;
+#X connect 30 1 33 0;
+#X connect 30 2 31 0;
+#X connect 30 3 32 1;
+#X connect 31 0 32 0;
+#X connect 33 1 34 0;
+#X connect 34 0 10 0;
+#X connect 34 1 9 0;
+#X connect 34 2 12 1;
+#X connect 34 3 36 0;
+#X connect 34 4 35 2;
+#X connect 36 0 35 0;
+#X connect 37 0 29 0;
+#X restore 130 77 pd init_model;
+#X obj 129 18 inlet;
+#N canvas 719 335 450 300 data 0;
+#X restore 138 182 pd data;
+#X connect 6 0 7 0;
+#X connect 8 0 6 0;

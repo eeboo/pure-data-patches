@@ -1,4 +1,4 @@
-#N canvas 538 53 1000 868 10;
+#N canvas 440 23 1000 787 10;
 #X obj 31 50 inlet;
 #X obj 32 257 route version resolution;
 #X obj 68 383 route index name bpm, f 21;
@@ -117,9 +117,10 @@
 #X connect 32 0 29 1;
 #X connect 33 0 29 1;
 #X connect 34 0 29 1;
+#X connect 35 0 29 1;
 #X connect 36 0 32 0;
-#X connect 36 1 7 1;
 #X connect 36 1 8 1;
+#X connect 36 1 7 1;
 #X connect 37 0 31 0;
 #X connect 37 1 10 1;
 #X connect 37 1 9 1;

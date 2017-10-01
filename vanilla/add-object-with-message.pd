@@ -1,0 +1,6 @@
+#N canvas 392 135 524 364 10;
+#X obj 48 178 s pd-add-object-with-message.pd;
+#X msg 48 49 obj 300 40 pd Hello;
+#X msg 54 267 \; pd-Hello obj 0 0 struct Hello float x symbol text
+;
+#X connect 1 0 0 0;

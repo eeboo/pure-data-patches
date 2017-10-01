@@ -1,0 +1,5 @@
+#N canvas 415 23 450 300 10;
+#X msg 161 125 msg 10 10 test;
+#X obj 160 100 namecanvas \$0-canvas;
+#X obj 161 210 send \$0-canvas;
+#X connect 0 0 2 0;

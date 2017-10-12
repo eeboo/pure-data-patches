@@ -1,0 +1,8 @@
+#N canvas 177 336 657 469 10;
+#X obj 30 149 eeb.entity.generator;
+#X msg 147 114 \$0;
+#X obj 147 80 loadbang;
+#X msg 30 39 Entity symbol name float index \,;
+#X connect 1 0 0 1;
+#X connect 2 0 1 0;
+#X connect 3 0 0 0;

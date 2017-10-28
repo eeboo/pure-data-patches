@@ -1,0 +1,9 @@
+#N canvas 495 23 415 259 10;
+#X obj 22 79 eeboo.gen.struct.prop-list;
+#X msg 22 29 Type float x float y float z symbol a symbol b symbol
+c;
+#X obj 22 134 print prop-list;
+#X obj 175 132 print length;
+#X connect 0 0 2 0;
+#X connect 0 1 3 0;
+#X connect 1 0 0 0;
